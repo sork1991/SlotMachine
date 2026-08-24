@@ -1,0 +1,19 @@
+#BlueJ class context
+#Sun Aug 23 10:35:52 COT 2026
+comment0.target=SymbolShape
+comment0.text=\r\n Contrato comun que deben cumplir todas las figuras que pueden\r\n representar visualmente a un Symbol, sin importar su forma concreta\r\n (circulo, rectangulo o triangulo). Permite que Symbol trabaje de\r\n manera uniforme con cualquiera de ellas (polimorfismo) sin necesidad\r\n de modificar las clases originales del paquete shapes.\r\n \r\n @author \r\n @version 1.0\r\n
+comment1.params=x y
+comment1.target=void setPosition(int, int)
+comment1.text=\r\n Fija la posicion absoluta de la figura. No existe en las clases\r\n originales de shapes, que solo tienen movimiento relativo; cada\r\n implementacion lo agrega.\r\n @param x coordenada x.\r\n @param y coordenada y.\r\n
+comment2.target=int getX()
+comment2.text=\r\n Devuelve la coordenada x actual, llevada por un control interno\r\n propio ya que las clases originales no la exponen.\r\n @return coordenada x.\r\n
+comment3.target=int getY()
+comment3.text=\r\n Devuelve la coordenada y actual.\r\n @return coordenada y.\r\n
+comment4.target=void makeVisible()
+comment4.text=\r\n Hace visible la figura (heredado directo de la figura base\r\n correspondiente).\r\n
+comment5.target=void makeInvisible()
+comment5.text=\r\n Hace invisible la figura (heredado directo).\r\n
+comment6.params=color
+comment6.target=void changeColor(java.lang.String)
+comment6.text=\r\n Cambia el color de la figura (heredado directo).\r\n @param color nuevo color.\r\n
+numComments=7

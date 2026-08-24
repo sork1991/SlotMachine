@@ -1,0 +1,29 @@
+#BlueJ class context
+#Sun Aug 23 21:39:13 COT 2026
+comment0.target=Symbol
+comment0.text=\r\n Representa un simbolo del dominio del juego. Es responsable del color\r\n (identidad logica del simbolo) y de si forma parte de la\r\n configuracion ganadora. Delega toda la representacion grafica en un\r\n objeto SymbolShape.\r\n \r\n @author \r\n @version 1.0\r\n
+comment1.params=color shape
+comment1.target=Symbol(java.lang.String, SymbolShape)
+comment1.text=\r\n Constructor\: recibe ya construidos el color y la figura concreta\r\n a usar. La decision de que figura crear se toma fuera de Symbol,\r\n tipicamente en Wheel.\r\n @param color color del simbolo.\r\n @param shape figura concreta (SymbolCircle, SymbolRectangle o\r\n              SymbolTriangle) que representa graficamente al\r\n              simbolo.\r\n
+comment10.target=boolean isWinningPart()
+comment10.text=\r\n Consulta si el simbolo es parte de la configuracion ganadora.\r\n @return true si es parte de la configuracion ganadora.\r\n
+comment2.target=java.lang.String getColor()
+comment2.text=\r\n Devuelve el color actual del simbolo.\r\n @return color del simbolo.\r\n
+comment3.params=color
+comment3.target=void setColor(java.lang.String)
+comment3.text=\r\n Cambia el color del simbolo\: actualiza el atributo propio y delega en\r\n shape.changeColor(color).\r\n @param color nuevo color.\r\n
+comment4.params=x y
+comment4.target=void setPosition(int, int)
+comment4.text=\r\n Delega en shape.setPosition(x, y) para posicionar visualmente el\r\n simbolo.\r\n @param x coordenada x.\r\n @param y coordenada y.\r\n
+comment5.target=int getX()
+comment5.text=\r\n Delega en shape.getX().\r\n @return coordenada x actual.\r\n
+comment6.target=int getY()
+comment6.text=\r\n Delega en shape.getY().\r\n @return coordenada y actual.\r\n
+comment7.target=void makeVisible()
+comment7.text=\r\n Delega en shape.makeVisible().\r\n
+comment8.target=void makeInvisible()
+comment8.text=\r\n Delega en shape.makeInvisible().\r\n
+comment9.params=winning
+comment9.target=void setWinningPart(boolean)
+comment9.text=\r\n Marca o desmarca el simbolo como parte de la configuracion\r\n ganadora.\r\n @param winning true si el simbolo hace parte de la configuracion\r\n                ganadora.\r\n
+numComments=11

@@ -1,0 +1,48 @@
+#BlueJ class context
+#Sun Aug 23 21:43:21 COT 2026
+comment0.target=SlotMachine
+comment0.text=\r\n Representa la maquina tragamonedas completa\: administra el conjunto de\r\n ruedas, controla la visibilidad general del simulador y lleva el estado\r\n de la ultima operacion realizada.\r\n \r\n @author DiazR-RojasM\r\n @version 1.0\r\n
+comment1.target=SlotMachine()
+comment1.text=\r\n Constructor de la maquina (sin ruedas). Inicializa body, deja\r\n isVisible en false y ok en su estado inicial.\r\n
+comment10.target=int distinctSymbols()
+comment10.text=\r\n Devuelve la cantidad de colores distintos presentes entre los\r\n simbolos de la maquina.\r\n @return numero de colores distintos.\r\n
+comment11.target=java.lang.String[] configuration()
+comment11.text=\r\n Retorna los colores de los simbolos visibles (currentSymbol) en\r\n todas las ruedas de la maquina, ordenados de izquierda a derecha.\r\n @return arreglo de colores de la configuracion actual.\r\n
+comment12.target=boolean isJackpot()
+comment12.text=\r\n Consulta si la configuracion actualmente visible es la\r\n configuracion ganadora.\r\n @return true si es ganadora, false en caso contrario.\r\n
+comment13.target=void makeVisible()
+comment13.text=\r\n Hace visible la maquina\: muestra body y pide a cada Wheel que se\r\n haga visible. Actualiza isVisible \= true.\r\n
+comment14.target=void makeInvisible()
+comment14.text=\r\n Oculta la maquina y todas sus ruedas. Actualiza isVisible \= false.\r\n
+comment15.target=void exit()
+comment15.text=\r\n Termina el simulador (cierra/oculta todo antes de finalizar el\r\n programa).\r\n
+comment16.target=boolean ok()
+comment16.text=\r\n Devuelve si la ultima operacion fue exitosa.\r\n @return true si la ultima operacion se realizo con exito.\r\n
+comment17.params=pos max
+comment17.target=int normalizedPosition(int, int)
+comment17.text=\r\n Metodo de apoyo privado\: aplica la regla de recorte de posiciones\r\n (si pos < 1 usa 1; si pos > max usa max). Es privado porque es un\r\n detalle interno de implementacion, no forma parte de la interfaz\r\n publica que pide el enunciado.\r\n @param pos posicion solicitada.\r\n @param max valor maximo permitido.\r\n @return posicion normalizada.\r\n
+comment18.target=void centerWheels()
+comment18.text=\r\n Recalcula y aplica (via setPosition) la posicion visual de cada\r\n rueda y de la maquina para mantenerlas centradas, cada vez que\r\n se agrega o elimina una.\r\n Privado por la misma razon de normalizedPosition.\r\n
+comment2.params=pos
+comment2.target=void addWheel(int)
+comment2.text=\r\n Agrega una rueda nueva en la posicion indicada (normalizada).\r\n La rueda nueva se crea con los mismos simbolos (mismo color y\r\n orden) que ya tienen las demas ruedas, para mantener la\r\n invariante de que todas las ruedas tienen igual cantidad de\r\n simbolos. Luego reacomoda visualmente todas las ruedas\r\n (centerWheels).\r\n @param pos posicion en la que se agrega la rueda.\r\n
+comment3.params=pos
+comment3.target=void delWheel(int)
+comment3.text=\r\n Elimina la rueda en la posicion indicada (normalizada). Antes de\r\n quitarla de wheels le pide que se oculte (remove()). Luego\r\n recalcula el centrado.\r\n @param pos posicion de la rueda a eliminar.\r\n
+comment4.params=pos color
+comment4.target=void addSymbol(int, java.lang.String)
+comment4.text=\r\n Agrega un simbolo de un color dado en una posicion dada a todas\r\n las ruedas por igual (los simbolos son compartidos conceptualmente\r\n por todas las ruedas). Normaliza la posicion una sola vez usando\r\n el tama\u00F1o actual de cualquier rueda (todas tienen el mismo tama\u00F1o).\r\n @param pos posicion donde se agrega el simbolo.\r\n @param color color del simbolo (nombre valido segun CSS).\r\n
+comment5.params=symbol
+comment5.target=void delSymbol(java.lang.String)
+comment5.text=\r\n Elimina, en todas las ruedas, el simbolo con el color indicado.\r\n @param symbol color del simbolo a eliminar.\r\n
+comment6.params=wheel symbol
+comment6.target=void placeSymbol(int, java.lang.String)
+comment6.text=\r\n Coloca (fija) en una rueda especifica el simbolo del color dado\r\n como su simbolo actual.\r\n @param wheel posicion de la rueda.\r\n @param symbol color del simbolo a colocar.\r\n
+comment7.params=wheel
+comment7.target=void spin(int)
+comment7.text=\r\n Gira una unica rueda especifica (le delega el giro a esa Wheel).\r\n @param wheel posicion de la rueda a girar.\r\n
+comment8.target=void spin()
+comment8.text=\r\n Gira todas las ruedas de la maquina (itera wheels y llama spin()\r\n en cada una).\r\n
+comment9.target=java.lang.String[] symbols()
+comment9.text=\r\n Retorna los colores de los simbolos de la rueda de referencia en el orden\r\n en que estan almacenados dentro de ella, iniciando por la\r\n posicion 1.\r\n @return arreglo de colores.\r\n
+numComments=19

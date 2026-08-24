@@ -1,0 +1,14 @@
+#BlueJ class context
+#Sun Aug 23 17:47:03 COT 2026
+comment0.target=SymbolTriangle
+comment0.text=\r\n SymbolTriangle es un Triangle extendido. Extiende su figura original\r\n sin modificarla y ademas implementa SymbolShape, agregando la\r\n capacidad de posicionamiento absoluto que las figuras originales no\r\n tienen (solo ofrecen movimiento relativo).\r\n SymbolTriangle implementa el contrato SymbolShape.\r\n \r\n makeVisible(), makeInvisible() y changeColor() se heredan\r\n directamente de Triangle y ya cumplen con lo que pide la interfaz\r\n SymbolShape.\r\n \r\n @author \r\n @version 1.0\r\n
+comment1.target=SymbolTriangle()
+comment1.text=\r\n Constructor\: invoca al constructor de la superclase e inicializa\r\n currentX y currentY con la posicion por defecto de esa figura.\r\n
+comment2.params=x y
+comment2.target=void setPosition(int, int)
+comment2.text=\r\n Fija la posicion absoluta de la figura. Calcula el desplazamiento\r\n necesario (x - currentX, y - currentY) y lo aplica usando los\r\n metodos heredados moveHorizontal y moveVertical.\r\n @param x coordenada x.\r\n @param y coordenada y.\r\n
+comment3.target=int getX()
+comment3.text=\r\n Devuelve currentX.\r\n @return coordenada x actual.\r\n
+comment4.target=int getY()
+comment4.text=\r\n Devuelve currentY.\r\n @return coordenada y actual.\r\n
+numComments=5
