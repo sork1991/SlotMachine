@@ -12,23 +12,39 @@ public class Symbol
     private String color;
     private SymbolShape shape;
     private boolean winning;
+    private String shapeType;
 
     /**
-     * Constructor: recibe ya construidos el color y la figura concreta
-     * a usar. La decision de que figura crear se toma fuera de Symbol,
-     * tipicamente en Wheel.
+     * Constructor: recibe ya construidos el color y el nombre de la figura. 
      * @param color color del simbolo.
-     * @param shape figura concreta (SymbolCircle, SymbolRectangle o
-     *              SymbolTriangle) que representa graficamente al
-     *              simbolo.
+     * @param shapeType figura concreta ("circle", "rectangle" o
+     * "triangle") que representa graficamente al simbolo.
      */
-    public Symbol(String color, SymbolShape shape)
+    public Symbol(String color, String shapeType)
     {
         this.color = color;
-        this.shape = shape;
+        this.shape = createShape(shapeType);
         shape.changeColor(color);
+        this.shapeType = shapeType;
     }
 
+    /**
+     * Metodo de fabrica privado: decide que implementacion concreta de
+     * SymbolShape instanciar segun el tipo pedido.
+     * @param shapeType tipo de figura solicitado.
+     * @return la figura concreta correspondiente.
+     */
+    private SymbolShape createShape(String shapeType)
+    {
+        if (shapeType.equals("circle")) {
+            return new SymbolCircle();
+        } else if (shapeType.equals("rectangle")) {
+            return new SymbolRectangle();
+        } else{
+            return new SymbolTriangle();
+        }
+    }
+    
     /**
      * Devuelve el color actual del simbolo.
      * @return color del simbolo.
@@ -36,6 +52,15 @@ public class Symbol
     public String getColor()
     {
         return color;
+    }
+    
+    /**
+     * devueve la el nombre de la figura actual
+     * @return nombre de la figura
+     */
+    public String getShape()
+    {
+        return shapeType;
     }
 
     /**
@@ -112,5 +137,13 @@ public class Symbol
     public boolean isWinningPart()
     {
         return winning;
+    }
+    
+    /**
+     * delega a symbolshape
+     */
+    public void changeSize(int height, int width)
+    {
+        shape.changeSize(height, width);
     }
 }

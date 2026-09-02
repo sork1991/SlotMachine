@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 
 /**
@@ -65,17 +64,22 @@ public class SlotMachine
     {
         int position = normalizedPosition(pos, wheels.size()+1);
         Wheel nuevo = new Wheel();
+        String[] simbolos = null;
+        String[] shapeTypes = null;
+        if(wheels.size() > 0) {
+            simbolos = wheels.get(0).symbolColors();
+            shapeTypes = wheels.get(0).symbolShapeType();
+        }
+        wheels.add(position - 1, nuevo);
         if(isVisible) {
             nuevo.makeVisible();
         }
-        if(wheels.size() > 0) {
-            String[] simbolos = wheels.get(0).symbolColors();
+        centerWheels();
+        if(simbolos != null) {
             for (int i = 0; i < simbolos.length; i++) {
-                nuevo.addSymbol(i+1, simbolos[i]);
+                nuevo.addSymbol(i, simbolos[i], shapeTypes[i]);
             }
         }
-        wheels.add(position - 1, nuevo);
-        centerWheels();
     }
 
     /**
@@ -99,13 +103,14 @@ public class SlotMachine
      * el tamaño actual de cualquier rueda (todas tienen el mismo tamaño).
      * @param pos posicion donde se agrega el simbolo.
      * @param color color del simbolo (nombre valido segun CSS).
+     * @param shapeType tipo de figura: "circle", "rectangle" o "triangle"
      */
-    public void addSymbol(int pos, String color)
+    public void addSymbol(int pos, String color, String shapeType)
     {
         if(wheels.size() > 0) {
             int position = normalizedPosition(pos, wheels.get(0).size() + 1);
             for (int i = 0; i < wheels.size(); i++) {
-                wheels.get(i).addSymbol(position - 1, color);
+                wheels.get(i).addSymbol(position - 1, color, shapeType);
             }
         }
     }

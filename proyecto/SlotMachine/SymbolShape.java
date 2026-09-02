@@ -48,4 +48,12 @@ public interface SymbolShape
      * @param color nuevo color.
      */
     void changeColor(String color);
+    
+    /**
+     * Cambia el tamaño de la figura. Cada implementación decide cómo
+     * traducir height/width a los parámetros propios de su figura base
+     * @param height alto deseado.
+     * @param width ancho deseado.
+     */
+    void changeSize(int height, int width);
 }

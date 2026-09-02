@@ -15,9 +15,10 @@
  */
 public class SymbolCircle extends Circle implements SymbolShape
 {
-    private int currentX;
+    private int actualX;
     private int currentY;
-
+    private int diameter;
+    
     /**
      * Constructor: invoca al constructor de la superclase e inicializa
      * currentX y currentY con la posicion por defecto de esa figura.
@@ -25,8 +26,9 @@ public class SymbolCircle extends Circle implements SymbolShape
     public SymbolCircle()
     {
         super();
-        currentX = 20;
+        actualX = 20;
         currentY = 15;
+        diameter = 30;
     }
 
     /**
@@ -38,11 +40,12 @@ public class SymbolCircle extends Circle implements SymbolShape
      */
     public void setPosition(int x, int y)
     {
-        int dx = x - currentX;
+        int targetX = x - diameter / 2;
+        int dx = targetX - actualX;
         int dy = y - currentY;
         moveHorizontal(dx);
         moveVertical(dy);
-        currentX = x;
+        actualX = targetX;
         currentY = y;
     }
 
@@ -52,7 +55,7 @@ public class SymbolCircle extends Circle implements SymbolShape
      */
     public int getX()
     {
-        return currentX;
+        return actualX + diameter / 2;
     }
 
     /**
@@ -62,5 +65,18 @@ public class SymbolCircle extends Circle implements SymbolShape
     public int getY()
     {
         return currentY;
+    }
+    
+    /**
+     * Adapta el contrato de dos dimensiones (height, width) de
+     * SymbolShape al de una sola dimension (diametro) que tiene Circle
+     * @param height alto deseado.
+     * @param width ancho deseado.
+     */
+    public void changeSize(int height, int width)
+    {
+        int newDiameter = (height + width) / 2;
+        changeSize(newDiameter);
+        diameter = newDiameter;
     }
 }

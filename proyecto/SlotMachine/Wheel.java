@@ -46,7 +46,9 @@ public class Wheel
         currentX = x;
         currentY = y;
         for (int i = 0; i < symbols.size(); i++) {
-            symbols.get(i).setPosition(x, y);
+            int symX = symbols.get(i).getX();
+            int symY = symbols.get(i).getY();
+            symbols.get(i).setPosition(symX + dx, symY + dy);
         }
     }
 
@@ -70,19 +72,19 @@ public class Wheel
 
     /**
      * Crea un nuevo Symbol del color dado y lo inserta en la posicion
-     * indicada (ya normalizada por SlotMachine).
-     * @param pos posicion (normalizada) donde insertar.
-     * @param color color del nuevo simbolo.
+     * indicada (ya normalizada por SlotMachine)
+     * @param pos posicion (normalizada) donde insertar
+     * @param color color del nuevo simbolo
+     * @param shapeType tipo de figura: "circle", "rectangle" o "triangle"
      */
-    public void addSymbol(int pos, String color)
+    public void addSymbol(int pos, String color, String shapeType)
     {
-        SymbolTriangle figura = new SymbolTriangle();
-        figura.changeSize(24, 16);
-        Symbol nuevo = new Symbol(color, figura);
-        nuevo.setPosition(currentX + 12, 138);
+        Symbol nuevo = new Symbol(color, shapeType);
+        nuevo.changeSize(24, 16);
+        nuevo.setPosition(currentX + 12, currentY + 8);
         symbols.add(pos, nuevo);
     }
-
+    
     /**
      * Busca (usando getColor() de cada simbolo) y elimina el primer
      * simbolo con ese color.
@@ -171,6 +173,22 @@ public class Wheel
             colors[i] = color;
         }
         return colors;
+    }
+    
+    /**
+     * Devuelve las figuras de todos los simbolos de la rueda, en el
+     * orden en que estan almacenados (iniciando en la posicion 1).
+     * @return arreglo de figuras.
+     */
+    public String[] symbolShapeType()
+    {
+        String[] shapeTypes = new String[symbols.size()];
+        String shapeType = null;
+        for (int i = 0; i < symbols.size(); i++) {
+            shapeType = symbols.get(i).getShape();
+            shapeTypes[i] = shapeType;
+        }
+        return shapeTypes;
     }
 
     /**

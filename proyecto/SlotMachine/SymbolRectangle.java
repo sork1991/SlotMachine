@@ -1,4 +1,4 @@
-/**
+    /**
  * SymbolRectangle es un Rectangle extendido. Extiende su figura
  * original sin modificarla y ademas implementa SymbolShape, agregando
  * la capacidad de posicionamiento absoluto que las figuras originales
@@ -14,8 +14,10 @@
  */
 public class SymbolRectangle extends Rectangle implements SymbolShape
 {
-    private int currentX;
+    private int actualX;
     private int currentY;
+    private int width;
+    private int height;
 
     /**
      * Constructor: invoca al constructor de la superclase e inicializa
@@ -24,10 +26,26 @@ public class SymbolRectangle extends Rectangle implements SymbolShape
     public SymbolRectangle()
     {
         super();
-        currentX = 70;
+        actualX = 70;
         currentY = 15;
+        width = 40;
+        height = 30;
     }
 
+    /**
+     * Ademas de cambiar el tamano real (heredado de Rectangle), guarda
+     * width y height localmente, necesarios para centrar la figura en
+     * setPosition().
+     * @param newHeight alto deseado.
+     * @param newWidth ancho deseado.
+     */
+    public void changeSize(int newHeight, int newWidth)
+    {
+        super.changeSize(newHeight, newWidth);
+        height = newHeight;
+        width = newWidth;
+    }
+    
     /**
      * Fija la posicion absoluta de la figura. Calcula el desplazamiento
      * necesario (x - currentX, y - currentY) y lo aplica usando los
@@ -37,11 +55,12 @@ public class SymbolRectangle extends Rectangle implements SymbolShape
      */
     public void setPosition(int x, int y)
     {
-        int dx = x - currentX;
+        int targetX = x - width / 2;
+        int dx = targetX - actualX;
         int dy = y - currentY;
         moveHorizontal(dx);
         moveVertical(dy);
-        currentX = x;
+        actualX = targetX;
         currentY = y;
     }
 
@@ -51,7 +70,7 @@ public class SymbolRectangle extends Rectangle implements SymbolShape
      */
     public int getX()
     {
-        return currentX;
+        return actualX + width / 2;
     }
 
     /**
