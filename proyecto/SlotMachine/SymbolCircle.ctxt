@@ -1,5 +1,5 @@
 #BlueJ class context
-#Sun Aug 23 18:18:40 COT 2026
+#Sat Sep 05 11:59:43 COT 2026
 comment0.target=SymbolCircle
 comment0.text=\r\n SymbolCircle es un Circle extendido con posicionamiento absoluto.\r\n Extiende su figura original sin modificarla y ademas implementa\r\n SymbolShape, agregando la capacidad de posicionamiento absoluto que\r\n las figuras originales no tienen (solo ofrecen movimiento relativo).\r\n SymbolCircle implementa el contrato SymbolShape.\r\n \r\n makeVisible(), makeInvisible() y changeColor() se heredan\r\n directamente de Circle y ya cumplen con lo que pide la interfaz\r\n SymbolShape.\r\n \r\n @author \r\n @version 1.0\r\n
 comment1.target=SymbolCircle()
@@ -11,4 +11,7 @@ comment3.target=int getX()
 comment3.text=\r\n Devuelve currentX.\r\n @return coordenada x actual.\r\n
 comment4.target=int getY()
 comment4.text=\r\n Devuelve currentY.\r\n @return coordenada y actual.\r\n
-numComments=5
+comment5.params=height width
+comment5.target=void changeSize(int, int)
+comment5.text=\r\n Adapta el contrato de dos dimensiones (height, width) de\r\n SymbolShape al de una sola dimension (diametro) que tiene Circle\r\n @param height alto deseado.\r\n @param width ancho deseado.\r\n
+numComments=6

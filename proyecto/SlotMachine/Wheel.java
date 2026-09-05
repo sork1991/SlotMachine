@@ -16,6 +16,7 @@ public class Wheel
     private boolean visible;
     private int currentX;
     private int currentY;
+    private boolean locked;
 
     /**
      * Constructor: crea la rueda vacia, sin posicion asignada todavia.
@@ -225,5 +226,50 @@ public class Wheel
         }
         frame.makeInvisible();
         visible = false;
+    }
+    /**
+     * Consulta si la rueda esta bloqueada.
+     * @return true si esta bloqueada.
+     */
+    public boolean isLocked(){
+        return locked;
+    }
+    
+    /**
+     * Bloquea la rueda
+     */
+    public void lock(){
+        locked = true;
+    }
+    
+    /**
+     * Desbloquea la rueda
+     */
+    public void unlock(){
+        locked = false;
+    }
+    
+    /**
+     * Rota la rueda steps posiciones desde el simbolo actual, en el
+     * orden de la lista. Si la rueda esta visible, el
+     * movimiento se ve paso a paso.
+     * @param steps cantidad de posiciones a avanzar.
+     */
+    public void spin(int steps)
+    {
+        int actual = 0;
+        for (int i = 0; i < symbols.size(); i++) {
+            if (symbols.get(i) == currentSymbol) {
+                actual = i;
+                break;
+            }
+        }
+    
+        int posicionMostrada = actual;
+        for (int paso = 1; paso <= steps; paso++) {
+            posicionMostrada = (posicionMostrada + 1) % symbols.size();
+            placeSymbol(symbols.get(posicionMostrada).getColor());
+            Canvas.getCanvas().wait(200);
+        }
     }
 }

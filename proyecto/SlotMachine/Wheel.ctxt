@@ -1,5 +1,5 @@
 #BlueJ class context
-#Sun Aug 23 21:43:18 COT 2026
+#Sat Sep 05 16:32:00 COT 2026
 comment0.target=Wheel
 comment0.text=\r\n Representa una rueda individual de la maquina. Administra su propia\r\n coleccion de simbolos, sabe cual es el simbolo actualmente mostrado y\r\n gestiona su propia visibilidad y posicion.\r\n \r\n @author \r\n @version 1.0\r\n
 comment1.target=Wheel()
@@ -8,12 +8,23 @@ comment10.target=void makeInvisible()
 comment10.text=\r\n Oculta frame y el currentSymbol; actualiza visible \= false.\r\n
 comment11.target=java.lang.String[] symbolColors()
 comment11.text=\r\n Devuelve los colores de todos los simbolos de la rueda, en el\r\n orden en que estan almacenados (iniciando en la posicion 1).\r\n @return arreglo de colores.\r\n
-comment12.target=java.lang.String getCurrentColor()
-comment12.text=\r\n Devuelve el color del currentSymbol (delega en\r\n currentSymbol.getColor()).\r\n @return color del simbolo actualmente mostrado.\r\n
-comment13.target=int size()
-comment13.text=\r\n Devuelve la cantidad de simbolos que tiene la rueda\r\n (symbols.size()).\r\n @return numero de simbolos.\r\n
-comment14.target=void remove()
-comment14.text=\r\n Oculta todos los simbolos y el frame de la rueda, dejandola lista\r\n para ser eliminada de SlotMachine.wheels.\r\n
+comment12.target=java.lang.String[] symbolShapeType()
+comment12.text=\r\n Devuelve las figuras de todos los simbolos de la rueda, en el\r\n orden en que estan almacenados (iniciando en la posicion 1).\r\n @return arreglo de figuras.\r\n
+comment13.target=java.lang.String getCurrentColor()
+comment13.text=\r\n Devuelve el color del currentSymbol (delega en\r\n currentSymbol.getColor()).\r\n @return color del simbolo actualmente mostrado.\r\n
+comment14.target=int size()
+comment14.text=\r\n Devuelve la cantidad de simbolos que tiene la rueda\r\n (symbols.size()).\r\n @return numero de simbolos.\r\n
+comment15.target=void remove()
+comment15.text=\r\n Oculta todos los simbolos y el frame de la rueda, dejandola lista\r\n para ser eliminada de SlotMachine.wheels.\r\n
+comment16.target=boolean isLocked()
+comment16.text=\r\n Consulta si la rueda esta bloqueada.\r\n @return true si esta bloqueada.\r\n
+comment17.target=void lock()
+comment17.text=\r\n Bloquea la rueda\r\n
+comment18.target=void unlock()
+comment18.text=\r\n Desbloquea la rueda\r\n
+comment19.params=steps
+comment19.target=void spin(int)
+comment19.text=\r\n Rota la rueda steps posiciones desde el simbolo actual, en el\r\n orden de la lista. Si la rueda esta visible, el\r\n movimiento se ve paso a paso.\r\n @param steps cantidad de posiciones a avanzar.\r\n
 comment2.params=x y
 comment2.target=void setPosition(int, int)
 comment2.text=\r\n Fija la posicion absoluta de la rueda\: mueve frame y reposiciona\r\n en cascada todos sus simbolos. Llamado por SlotMachine durante el\r\n centrado.\r\n @param x coordenada x.\r\n @param y coordenada y.\r\n
@@ -21,9 +32,9 @@ comment3.target=int getX()
 comment3.text=\r\n Devuelve la coordenada x actual de la rueda.\r\n @return coordenada x.\r\n
 comment4.target=int getY()
 comment4.text=\r\n Devuelve la coordenada y actual de la rueda.\r\n @return coordenada y.\r\n
-comment5.params=pos color
-comment5.target=void addSymbol(int, java.lang.String)
-comment5.text=\r\n Crea un nuevo Symbol del color dado y lo inserta en la posicion\r\n indicada (ya normalizada por SlotMachine).\r\n @param pos posicion (normalizada) donde insertar.\r\n @param color color del nuevo simbolo.\r\n
+comment5.params=pos color shapeType
+comment5.target=void addSymbol(int, java.lang.String, java.lang.String)
+comment5.text=\r\n Crea un nuevo Symbol del color dado y lo inserta en la posicion\r\n indicada (ya normalizada por SlotMachine)\r\n @param pos posicion (normalizada) donde insertar\r\n @param color color del nuevo simbolo\r\n @param shapeType tipo de figura\: "circle", "rectangle" o "triangle"\r\n
 comment6.params=color
 comment6.target=void delSymbol(java.lang.String)
 comment6.text=\r\n Busca (usando getColor() de cada simbolo) y elimina el primer\r\n simbolo con ese color.\r\n @param color color del simbolo a eliminar.\r\n
@@ -34,4 +45,4 @@ comment8.target=void spin()
 comment8.text=\r\n Selecciona al azar una posicion dentro de symbols (usando el\r\n tamano actual de la lista), oculta el currentSymbol anterior,\r\n actualiza currentSymbol al elegido y lo muestra si la rueda esta\r\n visible.\r\n
 comment9.target=void makeVisible()
 comment9.text=\r\n Hace visible frame y el currentSymbol; actualiza visible \= true.\r\n
-numComments=15
+numComments=20

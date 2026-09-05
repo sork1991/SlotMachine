@@ -1,5 +1,5 @@
 #BlueJ class context
-#Sun Aug 23 10:35:52 COT 2026
+#Sat Sep 05 11:59:43 COT 2026
 comment0.target=SymbolShape
 comment0.text=\r\n Contrato comun que deben cumplir todas las figuras que pueden\r\n representar visualmente a un Symbol, sin importar su forma concreta\r\n (circulo, rectangulo o triangulo). Permite que Symbol trabaje de\r\n manera uniforme con cualquiera de ellas (polimorfismo) sin necesidad\r\n de modificar las clases originales del paquete shapes.\r\n \r\n @author \r\n @version 1.0\r\n
 comment1.params=x y
@@ -16,4 +16,7 @@ comment5.text=\r\n Hace invisible la figura (heredado directo).\r\n
 comment6.params=color
 comment6.target=void changeColor(java.lang.String)
 comment6.text=\r\n Cambia el color de la figura (heredado directo).\r\n @param color nuevo color.\r\n
-numComments=7
+comment7.params=height width
+comment7.target=void changeSize(int, int)
+comment7.text=\r\n Cambia el tama\u00F1o de la figura. Cada implementaci\u00F3n decide c\u00F3mo\r\n traducir height/width a los par\u00E1metros propios de su figura base\r\n @param height alto deseado.\r\n @param width ancho deseado.\r\n
+numComments=8

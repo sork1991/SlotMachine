@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  * Representa la maquina tragamonedas completa: administra el conjunto de
@@ -145,15 +146,21 @@ public class SlotMachine
     public void spin(int wheel)
     {
         int position = normalizedPosition(wheel, wheels.size());
-        wheels.get(position - 1).spin();
-        boolean win = isJackpot();
+        if(!wheels.get(position-1).isLocked()){
+           wheels.get(position - 1).spin(); 
+        }
+        else if (isVisible) {
+            JOptionPane.showMessageDialog(null, "La rueda está bloqueada");
+        }
         if (isJackpot()) {
             body.changeColor("yellow");
         } 
         else {
         body.changeColor("magenta");
         }
-        makeVisible();
+        if(isVisible){
+            makeVisible();
+        }
     }
 
     /**
@@ -163,16 +170,19 @@ public class SlotMachine
     public void spin()
     {
         for (int i = 0; i < wheels.size(); i++) {
-            wheels.get(i).spin();
+            if(!wheels.get(i).isLocked()){
+                wheels.get(i).spin();
+            }
         }
-        boolean win = isJackpot();
         if (isJackpot()) {
             body.changeColor("yellow");
         } 
         else {
         body.changeColor("magenta");
         }
-        makeVisible();
+        if(isVisible){
+            makeVisible();
+        }
     }
 
     /**
@@ -256,6 +266,7 @@ public class SlotMachine
         for (int i = 0; i < wheels.size(); i++) {
             wheels.get(i).makeVisible();
         }
+        isVisible = true;
     }
 
     /**
@@ -270,6 +281,7 @@ public class SlotMachine
         for (int i = 0; i < wheels.size(); i++) {
             wheels.get(i).makeInvisible();
         }
+        isVisible = false;
     }
 
     /**
@@ -295,6 +307,90 @@ public class SlotMachine
     public boolean ok()
     {
         return ok;
+    }
+    
+    /**
+     * Intercambia de posicion dos ruedas.
+     * @param wheel1 posicion de la primera rueda.
+     * @param wheel2 posicion de la segunda rueda.
+     */
+    public void swap(int wheel1, int wheel2){
+        int i = normalizedPosition(wheel1, wheels.size());
+        int j = normalizedPosition(wheel2, wheels.size());
+        Wheel first = wheels.get(i-1);
+        Wheel second = wheels.get(j-1);
+        wheels.set(i-1, second);
+        wheels.set(j-1, first);
+        centerWheels();
+        if(isVisible){
+            makeVisible();
+        }
+    }
+    
+    /**
+     * Bloquea la rueda en la posicion indicada.
+     * @param wheel posicion de la rueda a bloquear.
+     */
+    public void lock(int wheel){
+        int pos = normalizedPosition(wheel, wheels.size());
+        wheels.get(pos-1).lock();
+    }
+    
+    /**
+     * Desbloquea la rueda en la posicion indicada.
+     * @param wheel posicion de la rueda a bloquear.
+     */
+    public void unlock(int wheel){
+        int pos = normalizedPosition(wheel, wheels.size());
+        wheels.get(pos-1).unlock();
+    }
+    
+    /**
+     * Gira una rueda especifica un numero de pasos dado.
+     * @param wheel posicion de la rueda a girar.
+     * @param steps cantidad de pasos a girar.
+     */
+    public void spin(int wheel, int steps){
+        int pos = normalizedPosition(wheel, wheels.size());
+        if(!wheels.get(pos-1).isLocked()){
+            wheels.get(pos-1).spin(steps);
+        }
+        else if (isVisible) {
+            JOptionPane.showMessageDialog(null, "La rueda está bloqueada");
+        }
+        if (isJackpot()) {
+            body.changeColor("yellow");
+        } else {
+            body.changeColor("magenta");
+        }
+        if(isVisible){
+            makeVisible();
+        }
+    }
+    
+    /**
+     * Deja la maquina en la configuracion exacta dada. Si el arreglo
+     * tiene mas elementos que ruedas, no hace nada.
+     * @param setSymbols colores deseados, uno por rueda.
+     */
+    public void spin(String[] setSymbols){
+        int longitud = setSymbols.length;
+        if(longitud <= wheels.size()){
+            for(int i = 0; i < longitud; i++){
+                wheels.get(i).placeSymbol(setSymbols[i]);
+            }
+        }
+        else if (isVisible) {
+            JOptionPane.showMessageDialog(null, "La cantidad de simbolos excede la cantidad de ruedas");
+        }
+        if (isJackpot()) {
+            body.changeColor("yellow");
+        } else {
+            body.changeColor("magenta");
+        }
+        if(isVisible){
+            makeVisible();
+        }
     }
 
     /**
