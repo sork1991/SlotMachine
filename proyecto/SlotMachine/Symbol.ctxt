@@ -1,0 +1,37 @@
+#BlueJ class context
+#Sat Sep 05 11:59:43 COT 2026
+comment0.target=Symbol
+comment0.text=\r\n Representa un simbolo del dominio del juego. Es responsable del color\r\n (identidad logica del simbolo) y de si forma parte de la\r\n configuracion ganadora. Delega toda la representacion grafica en un\r\n objeto SymbolShape.\r\n \r\n @author \r\n @version 1.0\r\n
+comment1.params=color shapeType
+comment1.target=Symbol(java.lang.String, java.lang.String)
+comment1.text=\r\n Constructor\: recibe ya construidos el color y el nombre de la figura. \r\n @param color color del simbolo.\r\n @param shapeType figura concreta ("circle", "rectangle" o\r\n "triangle") que representa graficamente al simbolo.\r\n
+comment10.target=void makeInvisible()
+comment10.text=\r\n Delega en shape.makeInvisible().\r\n
+comment11.params=winning
+comment11.target=void setWinningPart(boolean)
+comment11.text=\r\n Marca o desmarca el simbolo como parte de la configuracion\r\n ganadora.\r\n @param winning true si el simbolo hace parte de la configuracion\r\n                ganadora.\r\n
+comment12.target=boolean isWinningPart()
+comment12.text=\r\n Consulta si el simbolo es parte de la configuracion ganadora.\r\n @return true si es parte de la configuracion ganadora.\r\n
+comment13.params=height width
+comment13.target=void changeSize(int, int)
+comment13.text=\r\n delega a symbolshape\r\n
+comment2.params=shapeType
+comment2.target=SymbolShape createShape(java.lang.String)
+comment2.text=\r\n Metodo de fabrica privado\: decide que implementacion concreta de\r\n SymbolShape instanciar segun el tipo pedido.\r\n @param shapeType tipo de figura solicitado.\r\n @return la figura concreta correspondiente.\r\n
+comment3.target=java.lang.String getColor()
+comment3.text=\r\n Devuelve el color actual del simbolo.\r\n @return color del simbolo.\r\n
+comment4.target=java.lang.String getShape()
+comment4.text=\r\n devueve la el nombre de la figura actual\r\n @return nombre de la figura\r\n
+comment5.params=color
+comment5.target=void setColor(java.lang.String)
+comment5.text=\r\n Cambia el color del simbolo\: actualiza el atributo propio y delega en\r\n shape.changeColor(color).\r\n @param color nuevo color.\r\n
+comment6.params=x y
+comment6.target=void setPosition(int, int)
+comment6.text=\r\n Delega en shape.setPosition(x, y) para posicionar visualmente el\r\n simbolo.\r\n @param x coordenada x.\r\n @param y coordenada y.\r\n
+comment7.target=int getX()
+comment7.text=\r\n Delega en shape.getX().\r\n @return coordenada x actual.\r\n
+comment8.target=int getY()
+comment8.text=\r\n Delega en shape.getY().\r\n @return coordenada y actual.\r\n
+comment9.target=void makeVisible()
+comment9.text=\r\n Delega en shape.makeVisible().\r\n
+numComments=14
