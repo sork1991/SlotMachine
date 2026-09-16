@@ -1,5 +1,5 @@
 #BlueJ class context
-#Sat Sep 05 11:59:43 COT 2026
+#Tue Sep 15 21:05:13 COT 2026
 comment0.target=Symbol
 comment0.text=\r\n Representa un simbolo del dominio del juego. Es responsable del color\r\n (identidad logica del simbolo) y de si forma parte de la\r\n configuracion ganadora. Delega toda la representacion grafica en un\r\n objeto SymbolShape.\r\n \r\n @author \r\n @version 1.0\r\n
 comment1.params=color shapeType
@@ -14,14 +14,14 @@ comment12.target=boolean isWinningPart()
 comment12.text=\r\n Consulta si el simbolo es parte de la configuracion ganadora.\r\n @return true si es parte de la configuracion ganadora.\r\n
 comment13.params=height width
 comment13.target=void changeSize(int, int)
-comment13.text=\r\n delega a symbolshape\r\n
+comment13.text=\r\n Delega a la interface symbolshape para cambiar el tama\u00F1o\r\n @param height la altura de la figura\r\n @param width el ancho de la figura\r\n
 comment2.params=shapeType
 comment2.target=SymbolShape createShape(java.lang.String)
-comment2.text=\r\n Metodo de fabrica privado\: decide que implementacion concreta de\r\n SymbolShape instanciar segun el tipo pedido.\r\n @param shapeType tipo de figura solicitado.\r\n @return la figura concreta correspondiente.\r\n
+comment2.text=\r\n Segun el texto que llega en shapeType crea la figura que\r\n corresponde si no coincide con ninguna de las conocidas se crea\r\n un triangulo por defecto\r\n @param shapeType tipo de figura pedido\r\n @return la figura ya creada\r\n
 comment3.target=java.lang.String getColor()
 comment3.text=\r\n Devuelve el color actual del simbolo.\r\n @return color del simbolo.\r\n
 comment4.target=java.lang.String getShape()
-comment4.text=\r\n devueve la el nombre de la figura actual\r\n @return nombre de la figura\r\n
+comment4.text=\r\n devuelve el nombre de la figura actual\r\n @return nombre de la figura\r\n
 comment5.params=color
 comment5.target=void setColor(java.lang.String)
 comment5.text=\r\n Cambia el color del simbolo\: actualiza el atributo propio y delega en\r\n shape.changeColor(color).\r\n @param color nuevo color.\r\n

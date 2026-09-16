@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * The test class slotMachineTest.
+ * The test class slotMachineC2Test.
  *
  * @author  (your name)
  * @version (a version number or a date)

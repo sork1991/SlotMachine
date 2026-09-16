@@ -29,10 +29,11 @@ public class Symbol
     }
 
     /**
-     * Metodo de fabrica privado: decide que implementacion concreta de
-     * SymbolShape instanciar segun el tipo pedido.
-     * @param shapeType tipo de figura solicitado.
-     * @return la figura concreta correspondiente.
+     * Segun el texto que llega en shapeType crea la figura que
+     * corresponde si no coincide con ninguna de las conocidas se crea
+     * un triangulo por defecto
+     * @param shapeType tipo de figura pedido
+     * @return la figura ya creada
      */
     private SymbolShape createShape(String shapeType)
     {
@@ -55,7 +56,7 @@ public class Symbol
     }
     
     /**
-     * devueve la el nombre de la figura actual
+     * devuelve el nombre de la figura actual
      * @return nombre de la figura
      */
     public String getShape()
@@ -140,7 +141,9 @@ public class Symbol
     }
     
     /**
-     * delega a symbolshape
+     * Delega a la interface symbolshape para cambiar el tamaño
+     * @param height la altura de la figura
+     * @param width el ancho de la figura
      */
     public void changeSize(int height, int width)
     {

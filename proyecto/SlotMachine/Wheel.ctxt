@@ -1,5 +1,5 @@
 #BlueJ class context
-#Sat Sep 05 16:32:00 COT 2026
+#Tue Sep 15 21:05:13 COT 2026
 comment0.target=Wheel
 comment0.text=\r\n Representa una rueda individual de la maquina. Administra su propia\r\n coleccion de simbolos, sabe cual es el simbolo actualmente mostrado y\r\n gestiona su propia visibilidad y posicion.\r\n \r\n @author \r\n @version 1.0\r\n
 comment1.target=Wheel()

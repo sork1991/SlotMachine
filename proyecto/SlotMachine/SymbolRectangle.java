@@ -1,4 +1,4 @@
-    /**
+/**
  * SymbolRectangle es un Rectangle extendido. Extiende su figura
  * original sin modificarla y ademas implementa SymbolShape, agregando
  * la capacidad de posicionamiento absoluto que las figuras originales
@@ -21,7 +21,7 @@ public class SymbolRectangle extends Rectangle implements SymbolShape
 
     /**
      * Constructor: invoca al constructor de la superclase e inicializa
-     * currentX y currentY con la posicion por defecto de esa figura.
+     * actualX y currentY con la posicion por defecto de esa figura.
      */
     public SymbolRectangle()
     {
@@ -33,7 +33,7 @@ public class SymbolRectangle extends Rectangle implements SymbolShape
     }
 
     /**
-     * Ademas de cambiar el tamano real (heredado de Rectangle), guarda
+     * Ademas de cambiar el tamaño real (heredado de Rectangle), guarda
      * width y height localmente, necesarios para centrar la figura en
      * setPosition().
      * @param newHeight alto deseado.
@@ -65,7 +65,7 @@ public class SymbolRectangle extends Rectangle implements SymbolShape
     }
 
     /**
-     * Devuelve currentX.
+     * Devuelve actualX.
      * @return coordenada x actual.
      */
     public int getX()

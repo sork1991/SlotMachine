@@ -1,7 +1,7 @@
 #BlueJ class context
-#Sun Sep 06 16:29:43 COT 2026
+#Tue Sep 15 21:05:33 COT 2026
 comment0.target=SlotMachineC2Test
-comment0.text=\r\n The test class slotMachineTest.\r\n\r\n @author  (your name)\r\n @version (a version number or a date)\r\n
+comment0.text=\r\n The test class slotMachineC2Test.\r\n\r\n @author  (your name)\r\n @version (a version number or a date)\r\n
 comment1.target=SlotMachineC2Test()
 comment1.text=\r\n Default constructor for test class slotMachineTest\r\n
 comment10.target=void shouldNotChangeWhenTooManySymbolsGiven()

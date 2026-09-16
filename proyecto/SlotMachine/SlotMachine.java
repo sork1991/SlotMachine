@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import java.util.Random;
 
 /**
  * Representa la maquina tragamonedas completa: administra el conjunto de
@@ -53,8 +54,43 @@ public class SlotMachine
     }
 
     /**
+     * Constructor de la maquina con un numero n de ruedas y simbolos
+     * hay un maximo de figuras que se pueden crear debido a que los colores no se pueden 
+     * repetir, y el maximo de n es igual a la cantidad de colores 
+     * disponibles al inicio, si se excede el valor no se crean
+     * ruedas ni simbolos pero el cuerpo si
+     * @param n numero de ruedas y simbolos deseados
+     */
+    public SlotMachine(int n){
+        this();
+        String[] opciCol = {"red", "blue", "black", "yellow", "green", "magenta"};
+        String[] opciFigur = {"circle", "rectangle","triangle"};
+        int dispos = opciCol.length;
+        Random random = new Random();        
+        if(n <= dispos){
+            for(int i =0; i<n; i++){
+                addWheel(i);
+                int col = random.nextInt(dispos);
+                int fig =random.nextInt(opciFigur.length);
+                addSymbol(i, opciCol[col], opciFigur[fig]);
+                String elegi = opciCol[col];
+                opciCol[col] = opciCol[dispos-1];
+                opciCol[dispos-1] = elegi;
+                opciCol[dispos-1] = null;
+                dispos -= 1;
+            }
+            ok = true;
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "debido a que solo existen " 
+            + dispos + " colores el maximo de ruedas y figuras son " + dispos);
+            ok = false;
+        }
+    }
+    
+    /**
      * Agrega una rueda nueva en la posicion indicada (normalizada).
-     * La rueda nueva se crea con los mismos simbolos (mismo color y
+     * La rueda nueva se crea con los mismos simbolos (mismo color, figura y
      * orden) que ya tienen las demas ruedas, para mantener la
      * invariante de que todas las ruedas tienen igual cantidad de
      * simbolos. Luego reacomoda visualmente todas las ruedas
@@ -186,15 +222,16 @@ public class SlotMachine
     }
 
     /**
-     * Retorna los colores de los simbolos de la rueda de referencia en el orden
-     * en que estan almacenados dentro de ella, iniciando por la
-     * posicion 1.
-     * @return arreglo de colores.
+     * Retorna los colores de los simbolos de la rueda de referencia 
+     * en el orden en que estan almacenados dentro de ella iniciando 
+     * por la posicion 1
+     * @return arreglo de colores si hay ruedas o 
+     * un arreglo vacio si no hay ruedas
      */
     public String[] symbols()
     {
         if(wheels.size() == 0) {
-            return null;
+            return new String[0];
         }
         return wheels.get(0).symbolColors();
     }
@@ -338,7 +375,7 @@ public class SlotMachine
     
     /**
      * Desbloquea la rueda en la posicion indicada.
-     * @param wheel posicion de la rueda a bloquear.
+     * @param wheel posicion de la rueda a desbloquear.
      */
     public void unlock(int wheel){
         int pos = normalizedPosition(wheel, wheels.size());

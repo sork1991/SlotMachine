@@ -21,7 +21,7 @@ public class SymbolCircle extends Circle implements SymbolShape
     
     /**
      * Constructor: invoca al constructor de la superclase e inicializa
-     * currentX y currentY con la posicion por defecto de esa figura.
+     * actualX y currentY con la posicion por defecto de esa figura.
      */
     public SymbolCircle()
     {
@@ -50,7 +50,7 @@ public class SymbolCircle extends Circle implements SymbolShape
     }
 
     /**
-     * Devuelve currentX.
+     * Devuelve actualX.
      * @return coordenada x actual.
      */
     public int getX()
