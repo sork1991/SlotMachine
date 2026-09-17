@@ -1,5 +1,5 @@
 #BlueJ class context
-#Tue Sep 15 21:05:33 COT 2026
+#Thu Sep 17 08:21:49 COT 2026
 comment0.target=SlotMachine
 comment0.text=\r\n Representa la maquina tragamonedas completa\: administra el conjunto de\r\n ruedas, controla la visibilidad general del simulador y lleva el estado\r\n de la ultima operacion realizada.\r\n \r\n @author DiazR-RojasM\r\n @version 1.0\r\n
 comment1.target=SlotMachine()
@@ -28,7 +28,7 @@ comment19.target=void lock(int)
 comment19.text=\r\n Bloquea la rueda en la posicion indicada.\r\n @param wheel posicion de la rueda a bloquear.\r\n
 comment2.params=n
 comment2.target=SlotMachine(int)
-comment2.text=\r\n Constructor de la maquina con un numero n de ruedas y simbolos\r\n hay un maximo de figuras que se pueden crear debido a que los colores no se pueden \r\n repetir, y el maximo de n es igual a la cantidad de colores \r\n disponibles al inicio, si se excede el valor no se crean\r\n ruedas ni simbolos pero el cuerpo si\r\n @param n numero de ruedas y simbolos deseados\r\n
+comment2.text=\r\n Constructor de la maquina con un numero n de ruedas y simbolos\r\n hay un maximo de figuras que se pueden crear debido a que los colores no se pueden \r\n repetir, y el maximo de n es igual a la cantidad de colores \r\n disponibles al inicio, si se excede el valor no se crean\r\n ruedas ni simbolos pero el cuerpo si,solo se puede colocar un numero del rango \r\n de 0 al maximo de colores que hayan\r\n @param n numero de ruedas y simbolos deseados\r\n
 comment20.params=wheel
 comment20.target=void unlock(int)
 comment20.text=\r\n Desbloquea la rueda en la posicion indicada.\r\n @param wheel posicion de la rueda a desbloquear.\r\n

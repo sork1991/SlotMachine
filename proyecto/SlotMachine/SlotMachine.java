@@ -58,16 +58,42 @@ public class SlotMachine
      * hay un maximo de figuras que se pueden crear debido a que los colores no se pueden 
      * repetir, y el maximo de n es igual a la cantidad de colores 
      * disponibles al inicio, si se excede el valor no se crean
-     * ruedas ni simbolos pero el cuerpo si
+     * ruedas ni simbolos pero el cuerpo si,solo se puede colocar un numero del rango 
+     * de 0 al maximo de colores que hayan
      * @param n numero de ruedas y simbolos deseados
      */
     public SlotMachine(int n){
-        this();
+        body = new Rectangle();
+        handle = new Circle();
+        arm = new Rectangle();
+        base = new Rectangle();
+        wheels = new ArrayList<Wheel>();
+        isVisible = false;
+        body.changeSize(70, 30);
+        base.changeSize(15, 40);
+        arm.changeSize(1,20);
+        handle.changeSize(10);
+        body.moveHorizontal(65);
+        body.moveVertical(100);
+        base.moveHorizontal(60);
+        base.moveVertical(170);
+        arm.moveHorizontal(95);
+        arm.moveVertical(135);
+        handle.moveHorizontal(165);
+        handle.moveVertical(130);
+        base.changeColor("red");
+        arm.changeColor("black");
+        bodyWidth = 30;
+        currentX = 135;
         String[] opciCol = {"red", "blue", "black", "yellow", "green", "magenta"};
         String[] opciFigur = {"circle", "rectangle","triangle"};
         int dispos = opciCol.length;
         Random random = new Random();        
-        if(n <= dispos){
+        if(n < 0){
+            JOptionPane.showMessageDialog(null, "el rango de creacion de la maquina es desde 0 hasta " + dispos);
+            ok = false;
+        }
+        else if(n <= dispos){
             for(int i =0; i<n; i++){
                 addWheel(i);
                 int col = random.nextInt(dispos);
@@ -81,9 +107,8 @@ public class SlotMachine
             }
             ok = true;
         }
-        else{
-            JOptionPane.showMessageDialog(null, "debido a que solo existen " 
-            + dispos + " colores el maximo de ruedas y figuras son " + dispos);
+        else if(n>6){
+            JOptionPane.showMessageDialog(null, "debido a que solo existen " + dispos + " colores el maximo de ruedas y figuras son " + dispos);
             ok = false;
         }
     }
@@ -214,7 +239,7 @@ public class SlotMachine
             body.changeColor("yellow");
         } 
         else {
-        body.changeColor("magenta");
+            body.changeColor("magenta");
         }
         if(isVisible){
             makeVisible();

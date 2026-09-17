@@ -43,14 +43,14 @@ public class SlotMachineContestTest
     }
     
     @Test
-    public void accordingDrRmShouldNEqualInWheelAndSymbol(){
-        int n = 3;
+    public void accordingDrRmShouldNotCreateWheelAndSymbolWithNegativeNumber(){
+        int n = -3;
         SlotMachine sM = new SlotMachine(n);
         int sizeW = sM.configuration().length;
         String[] s = sM.symbols();
         int sizeS = s.length;
-        assertEquals(n, sizeW);
-        assertEquals(n, sizeS);
+        assertEquals(0, sizeW);
+        assertEquals(0, sizeS);
     }
     
     @Test
