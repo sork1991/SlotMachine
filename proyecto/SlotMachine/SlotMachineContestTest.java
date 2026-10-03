@@ -33,13 +33,12 @@ public class SlotMachineContestTest
     }
     
     @Test
-    public void shouldNotGenereteWheelsAndSymbolsMajorthanColors(){
+    public void shouldGenereteMoreWheelsThanSymbolsWithNumberMajorthanColors(){
         SlotMachine sM = new SlotMachine(8);
         int sizeW = sM.configuration().length;
         String[] s = sM.symbols();
         int sizeS = s.length;
-        assertEquals(0, sizeW);
-        assertEquals(0, sizeS);
+        assert(sizeW > sizeS);
     }
     
     @Test
@@ -60,6 +59,62 @@ public class SlotMachineContestTest
         SlotMachine sM = new SlotMachine(n);
         int res = sM.distinctSymbols();
         assertEquals(n, res);
+    }
+    
+    /** 
+     * Verifica que si la rueda no esta resuelta al inicio debe tener
+     * mas de 0 movimientos
+     */
+    @Test
+    public void accordingDrRmShouldReturnNonEmptyMovesWhenNotInJackpot() {
+        int n = 4;
+        SlotMachine sM = new SlotMachine(n);
+        int[][] moves = SlotMachineContest.solve(n);
+        if (!sM.isJackpot()) {
+            assertTrue(moves.length > 0);
+        }
+    }
+
+    /**
+     * Verifica que no tenga pasos negativos
+     */
+    @Test
+    public void accordingDrRmShouldNotReturnNegativeStepsInSolve() {
+        int n = 4;
+        int[][] moves = SlotMachineContest.solve(n);
+        for (int[] move : moves) {
+            int steps = move[1];
+            assertTrue(steps > 0);
+        }
+    }
+
+    /**
+     * Verifica que si la rueda está en jackpot no hace nada
+     */
+    @Test
+    public void shouldReturnZeroMovesWhenMachineStartsInJackpot() {
+        int n = 3;
+        int[][] moves = SlotMachineContest.solve(n);
+        SlotMachine sM = new SlotMachine(n);
+        
+        if (sM.isJackpot()) {
+            assertEquals(0, moves.length);
+        }
+    }
+
+    /**
+     * Verifica que el indice de las ruedas a mover
+     * en el resultado si sea valido, debe estar entre 1 y n
+     */
+    @Test
+    public void shouldNotReturnInvalidWheelIndicesInSolve() {
+        int n = 4;
+        int[][] moves = SlotMachineContest.solve(n);
+        
+        for (int[] move : moves) {
+            int wheelIndex = move[0];
+            assertTrue(wheelIndex >= 1 && wheelIndex <= n);
+        }
     }
     
     /**

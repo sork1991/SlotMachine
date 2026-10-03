@@ -1,0 +1,15 @@
+#BlueJ class context
+#Sat Oct 03 09:06:04 COT 2026
+comment0.target=Ephemeral
+comment0.text=\r\n Write a description of class Ephemeral here.\r\n \r\n @author (your name) \r\n @version (a version number or a date)\r\n
+comment1.params=color shapeType
+comment1.target=Ephemeral(java.lang.String, java.lang.String)
+comment1.text=\r\n Constructor de Ephemeral usa el constructor de su clase padre\r\n @param color color del simbolo\r\n @param shapeType figura concreta ("circle", "rectangle" o\r\n "triangle") que representa graficamente al simbolo\r\n
+comment2.target=void notifySpin()
+comment2.text=\r\n @Override\r\n cuando se gire una rueda su tama\u00F1o se reducira en\r\n su altura y su ancho menos la altura y ancho respectivamente\r\n divido entre 8 solo son validos spin(), spin(wheel) y\r\n spin(wheel, steps) para que se reduzca el simbolo\r\n despues del 7 spin ya no se reduce\r\n
+comment3.params=height width
+comment3.target=void changeSize(int, int)
+comment3.text=\r\n @Override\r\n cambia el tama\u00F1o del simbolo\r\n @param height la nueva altura\r\n @param width el nuevo ancho\r\n
+comment4.target=java.lang.String getType()
+comment4.text=\r\n @Override\r\n @return el tipo de simbolo que es\r\n
+numComments=5

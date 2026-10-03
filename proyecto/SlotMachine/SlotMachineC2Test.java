@@ -37,9 +37,9 @@ public class SlotMachineC2Test
         slotMachine.addWheel(1);
         slotMachine.addWheel(2);
         slotMachine.addWheel(3);
-        slotMachine.addSymbol(1,"red","triangle");
-        slotMachine.addSymbol(2,"blue","rectangle");
-        slotMachine.addSymbol(3,"yellow","circle");
+        slotMachine.addSymbol("normal",1,"red");
+        slotMachine.addSymbol("normal",2,"blue");
+        slotMachine.addSymbol("normal",3,"yellow");
         slotMachine.placeSymbol(1, "red");
         slotMachine.placeSymbol(2, "blue");
         slotMachine.placeSymbol(3, "yellow");
@@ -54,8 +54,8 @@ public class SlotMachineC2Test
     {
         slotMachine.addWheel(1);
         slotMachine.addWheel(2);
-        slotMachine.addSymbol(1,"red","triangle");
-        slotMachine.addSymbol(2,"blue","rectangle");
+        slotMachine.addSymbol("normal",1,"red");
+        slotMachine.addSymbol("normal",2,"blue");
         slotMachine.placeSymbol(1, "red");
         slotMachine.placeSymbol(2, "blue");
         slotMachine.swap(1, 1);
@@ -68,11 +68,11 @@ public class SlotMachineC2Test
     public void shouldChangeSymbolWhenUnlocked()
     {
         slotMachine.addWheel(1);
-        slotMachine.addSymbol(1,"red","triangle");
-        slotMachine.addSymbol(2,"blue","rectangle");
-        slotMachine.addSymbol(3,"yellow","circle");
-        slotMachine.addSymbol(4,"purple","circle");
-        slotMachine.addSymbol(5,"black","triangle");
+        slotMachine.addSymbol("normal",1,"red");
+        slotMachine.addSymbol("normal",2,"blue");
+        slotMachine.addSymbol("normal",3,"yellow");
+        slotMachine.addSymbol("normal",4,"purple");
+        slotMachine.addSymbol("normal",5,"black");
         slotMachine.placeSymbol(1, "red");
         slotMachine.lock(1);
         slotMachine.unlock(1);
@@ -86,11 +86,11 @@ public class SlotMachineC2Test
     public void shouldNotChangeSymbolInWheelLock()
     {
         slotMachine.addWheel(1);
-        slotMachine.addSymbol(1,"red","triangle");
-        slotMachine.addSymbol(2,"blue","rectangle");
-        slotMachine.addSymbol(3,"yellow","circle");
-        slotMachine.addSymbol(4,"purple","circle");
-        slotMachine.addSymbol(5,"black","triangle");
+        slotMachine.addSymbol("normal",1,"red");
+        slotMachine.addSymbol("normal",2,"blue");
+        slotMachine.addSymbol("normal",3,"yellow");
+        slotMachine.addSymbol("normal",4,"purple");
+        slotMachine.addSymbol("normal",5,"black");
         slotMachine.placeSymbol(1, "red");
         slotMachine.lock(1);
         String[] colorAntes = slotMachine.configuration();
@@ -103,10 +103,10 @@ public class SlotMachineC2Test
     public void shouldMoveToCorrectSymbolAfterSteps()
     {
         slotMachine.addWheel(1);
-        slotMachine.addSymbol(1,"red","triangle");
-        slotMachine.addSymbol(2,"blue","rectangle");
-        slotMachine.addSymbol(3,"yellow","circle");
-        slotMachine.addSymbol(4,"purple","circle");
+        slotMachine.addSymbol("normal",1,"red");
+        slotMachine.addSymbol("normal",2,"blue");
+        slotMachine.addSymbol("normal",3,"yellow");
+        slotMachine.addSymbol("normal",4,"purple");
         slotMachine.placeSymbol(1, "red");
         slotMachine.spin(1, 2);
         String resultado = slotMachine.configuration()[0];
@@ -117,10 +117,10 @@ public class SlotMachineC2Test
     public void shouldNotMoveWhenWheelIsLocked()
     {
         slotMachine.addWheel(1);
-        slotMachine.addSymbol(1,"red","triangle");
-        slotMachine.addSymbol(2,"blue","rectangle");
-        slotMachine.addSymbol(3,"yellow","circle");
-        slotMachine.addSymbol(4,"purple","circle");
+        slotMachine.addSymbol("normal",1,"red");
+        slotMachine.addSymbol("normal",2,"blue");
+        slotMachine.addSymbol("normal",3,"yellow");
+        slotMachine.addSymbol("normal",4,"purple");
         slotMachine.placeSymbol(1, "red");
         slotMachine.lock(1);
         String colorAntes = slotMachine.configuration()[0];
@@ -134,10 +134,10 @@ public class SlotMachineC2Test
     {
         slotMachine.addWheel(1);
         slotMachine.addWheel(2);
-        slotMachine.addSymbol(1,"red","triangle");
-        slotMachine.addSymbol(2,"blue","rectangle");
-        slotMachine.addSymbol(3,"yellow","circle");
-        slotMachine.addSymbol(4,"purple","circle");
+        slotMachine.addSymbol("normal",1,"red");
+        slotMachine.addSymbol("normal",2,"blue");
+        slotMachine.addSymbol("normal",3,"yellow");
+        slotMachine.addSymbol("normal",4,"purple");
         slotMachine.spin(new String[]{"red", "blue"});
         String[] resultado = slotMachine.configuration();
         assertArrayEquals(new String[]{"red", "blue"}, resultado);
@@ -148,10 +148,10 @@ public class SlotMachineC2Test
     {
         slotMachine.addWheel(1);
         slotMachine.addWheel(2);
-        slotMachine.addSymbol(1,"red","triangle");
-        slotMachine.addSymbol(2,"blue","rectangle");
-        slotMachine.addSymbol(3,"yellow","circle");
-        slotMachine.addSymbol(4,"purple","circle");
+        slotMachine.addSymbol("normal",1,"red");
+        slotMachine.addSymbol("normal",2,"blue");
+        slotMachine.addSymbol("normal",3,"yellow");
+        slotMachine.addSymbol("normal",4,"purple");
         slotMachine.placeSymbol(1, "red");
         slotMachine.placeSymbol(2, "blue");
         String[] Antes = slotMachine.configuration();
@@ -166,8 +166,8 @@ public class SlotMachineC2Test
         slotMachine.addWheel(1);
         slotMachine.addWheel(2);
         slotMachine.addWheel(3);
-        slotMachine.addSymbol(1, "red", "triangle");
-        slotMachine.addSymbol(2, "blue", "rectangle");
+        slotMachine.addSymbol("normal", 1, "red");
+        slotMachine.addSymbol("normal", 2, "blue");
         slotMachine.spin(new String[]{"red", "red", "red"});
         assertTrue(slotMachine.isJackpot());
     }
@@ -179,7 +179,7 @@ public class SlotMachineC2Test
         slotMachine.addWheel(2);
         slotMachine.addWheel(3);
         slotMachine.delWheel(2);
-        slotMachine.addSymbol(1, "red", "triangle");
+        slotMachine.addSymbol("normal", 1, "red");
         slotMachine.spin(new String[]{"red", "red"});
         assertEquals(2, slotMachine.configuration().length);
     }

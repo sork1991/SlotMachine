@@ -1,0 +1,15 @@
+#BlueJ class context
+#Sat Oct 03 09:20:17 COT 2026
+comment0.target=Shy
+comment0.text=\r\n Write a description of class Shy here.\r\n \r\n @author (your name) \r\n @version (a version number or a date)\r\n
+comment1.params=color shapeType
+comment1.target=Shy(java.lang.String, java.lang.String)
+comment1.text=\r\n Constructor de shy usa el constructor de su clase padre\r\n @param color color del simbolo\r\n @param shapeType figura concreta ("circle", "rectangle" o\r\n "triangle") que representa graficamente al simbolo\r\n
+comment2.target=void notifySelection()
+comment2.text=\r\n @Override\r\n cuando sea visible en la maquina el simbolo se volvera \r\n invisible por que es timido\r\n
+comment3.target=void makeVisible()
+comment3.text=\r\n @Override\r\n si el simbolo shy tiene su atributo de visibilidad (isVisible)\r\n true se dibuja normal si se llama a makeVisible\r\n pero si es false no se va a dibujar\r\n
+comment4.target=java.lang.String getType()
+comment4.text=\r\n @Override\r\n @return el tipo de simbolo que es\r\n
+comment5.target=boolean getVisibility()
+numComments=6

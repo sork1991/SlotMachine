@@ -1,5 +1,5 @@
 #BlueJ class context
-#Sun Sep 13 16:56:50 COT 2026
+#Fri Oct 02 11:03:43 COT 2026
 comment0.target=SymbolTriangle
 comment0.text=\r\n SymbolTriangle es un Triangle extendido. Extiende su figura original\r\n sin modificarla y ademas implementa SymbolShape, agregando la\r\n capacidad de posicionamiento absoluto que las figuras originales no\r\n tienen (solo ofrecen movimiento relativo).\r\n SymbolTriangle implementa el contrato SymbolShape.\r\n \r\n makeVisible(), makeInvisible() y changeColor() se heredan\r\n directamente de Triangle y ya cumplen con lo que pide la interfaz\r\n SymbolShape.\r\n \r\n @author \r\n @version 1.0\r\n
 comment1.target=SymbolTriangle()
@@ -11,4 +11,5 @@ comment3.target=int getX()
 comment3.text=\r\n Devuelve currentX.\r\n @return coordenada x actual.\r\n
 comment4.target=int getY()
 comment4.text=\r\n Devuelve currentY.\r\n @return coordenada y actual.\r\n
-numComments=5
+comment5.target=int[] getSize()
+numComments=6

@@ -75,15 +75,39 @@ public class Wheel
      * Crea un nuevo Symbol del color dado y lo inserta en la posicion
      * indicada (ya normalizada por SlotMachine)
      * @param pos posicion (normalizada) donde insertar
-     * @param color color del nuevo simbolo
+     * @param type tipo de simbolo si es normal shy o ephemeral
      * @param shapeType tipo de figura: "circle", "rectangle" o "triangle"
+     * @param color color del nuevo simbolo
      */
-    public void addSymbol(int pos, String color, String shapeType)
+    public void addSymbol(int pos, String figure, String type, String color) throws SlotMachineException
     {
-        Symbol nuevo = new Symbol(color, shapeType);
+        Symbol nuevo = createTypeSymbol(type, figure, color);
         nuevo.changeSize(24, 16);
         nuevo.setPosition(currentX + 12, currentY + 8);
         symbols.add(pos, nuevo);
+    }
+    
+    
+    /**
+     * crea el tipo de simbolo correspondiente
+     * @param type tipo de simbolo si es normal shy o ephemeral
+     * @param figura la figura que entra
+     * @param color el color del que sera la figura
+     * @return el simbolo creado
+     * @Throws SlotMachineException una excepcion para cuando el tipo
+     * es invalido
+     */
+    public Symbol createTypeSymbol(String type, String figure, String color) throws SlotMachineException{
+        if(type.equals("normal")){
+            return new Symbol(color, figure);
+        }
+        else if(type.equals("shy")){
+            return new Shy(color, figure);
+        }
+        else if(type.equals("ephemeral")){
+            return new Ephemeral(color, figure);
+        }
+        throw new SlotMachineException("el tipo " + type + " es invalido solo se permite normal, shy o ephemeral");
     }
     
     /**
@@ -117,6 +141,7 @@ public class Wheel
                 currentSymbol = symbols.get(i);
                 if(visible) {
                     currentSymbol.makeVisible();
+                    currentSymbol.notifySelection();
                 }
                 break;
             }
@@ -134,7 +159,9 @@ public class Wheel
         int indice = (int) (Math.random() * symbols.size());
         String color = symbols.get(indice).getColor();
         placeSymbol(color);
+        notifySpinForSymbols();
     }
+    
 
     /**
      * Hace visible frame y el currentSymbol; actualiza visible = true.
@@ -190,6 +217,20 @@ public class Wheel
             shapeTypes[i] = shapeType;
         }
         return shapeTypes;
+    }
+    
+    /**
+     * Devuelve los tipos de los simbolos de la rueda
+     * @return arreglo de tipos
+     */
+    public String[] typeSymbols(){
+        String[] types = new String[symbols.size()];
+        String type = null;
+        for(int i = 0; i < symbols.size(); i++){
+            type = symbols.get(i).getType();
+            types[i] = type;
+        }
+        return types;
     }
 
     /**
@@ -269,7 +310,14 @@ public class Wheel
         for (int paso = 1; paso <= steps; paso++) {
             posicionMostrada = (posicionMostrada + 1) % symbols.size();
             placeSymbol(symbols.get(posicionMostrada).getColor());
+            notifySpinForSymbols();
             Canvas.getCanvas().wait(200);
         }
+    }
+    
+    public void notifySpinForSymbols(){
+        for(int i=0; i<symbols.size();i++){
+                symbols.get(i).notifySpin();
+            }
     }
 }

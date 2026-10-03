@@ -79,4 +79,10 @@ public class SymbolCircle extends Circle implements SymbolShape
         changeSize(newDiameter);
         diameter = newDiameter;
     }
+    
+    public int[] getSize(){
+        int[] tamaño = new int[1];
+        tamaño[0] = diameter;
+        return tamaño;
+    }
 }

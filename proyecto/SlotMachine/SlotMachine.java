@@ -21,6 +21,7 @@ public class SlotMachine
     private boolean ok;
     private int bodyWidth;
     private int currentX;
+    private Random random = new Random();
 
     /**
      * Constructor de la maquina (sin ruedas). Inicializa body, deja
@@ -86,32 +87,43 @@ public class SlotMachine
         bodyWidth = 30;
         currentX = 135;
         String[] opciCol = {"red", "blue", "black", "yellow", "green", "magenta"};
-        String[] opciFigur = {"circle", "rectangle","triangle"};
+        String[] opciType = {"normal", "shy","ephemeral"};
         int dispos = opciCol.length;
         Random random = new Random();        
-        if(n < 0){
-            JOptionPane.showMessageDialog(null, "el rango de creacion de la maquina es desde 0 hasta " + dispos);
-            ok = false;
+        for(int i =0; i<n; i++){
+            addWheel(i);
         }
-        else if(n <= dispos){
-            for(int i =0; i<n; i++){
-                addWheel(i);
+        if (n > dispos){
+            int dif = n-dispos;
+            int fin = n - dif;
+            for(int i=0; i < fin; i++){    
+                int type =random.nextInt(opciType.length);
                 int col = random.nextInt(dispos);
-                int fig =random.nextInt(opciFigur.length);
-                addSymbol(i, opciCol[col], opciFigur[fig]);
+                addSymbol(opciType[type], i, opciCol[col]);
                 String elegi = opciCol[col];
                 opciCol[col] = opciCol[dispos-1];
                 opciCol[dispos-1] = elegi;
                 opciCol[dispos-1] = null;
                 dispos -= 1;
             }
-            ok = true;
         }
-        else if(n>6){
-            JOptionPane.showMessageDialog(null, "debido a que solo existen " + dispos + " colores el maximo de ruedas y figuras son " + dispos);
-            ok = false;
+        else{
+        for(int i=0; i < n; i++){    
+                int type =random.nextInt(opciType.length);
+                int col = random.nextInt(dispos);
+                addSymbol(opciType[type], i, opciCol[col]);
+                String elegi = opciCol[col];
+                opciCol[col] = opciCol[dispos-1];
+                opciCol[dispos-1] = elegi;
+                opciCol[dispos-1] = null;
+                dispos -= 1;
+            }
         }
+        ok = true;
+        spin();
     }
+
+
     
     /**
      * Agrega una rueda nueva en la posicion indicada (normalizada).
@@ -127,10 +139,12 @@ public class SlotMachine
         int position = normalizedPosition(pos, wheels.size()+1);
         Wheel nuevo = new Wheel();
         String[] simbolos = null;
-        String[] shapeTypes = null;
+        String[] figur = null;
+        String[] type = null;
         if(wheels.size() > 0) {
             simbolos = wheels.get(0).symbolColors();
-            shapeTypes = wheels.get(0).symbolShapeType();
+            figur = wheels.get(0).symbolShapeType();
+            type = wheels.get(0).typeSymbols();
         }
         wheels.add(position - 1, nuevo);
         if(isVisible) {
@@ -138,8 +152,13 @@ public class SlotMachine
         }
         centerWheels();
         if(simbolos != null) {
-            for (int i = 0; i < simbolos.length; i++) {
-                nuevo.addSymbol(i, simbolos[i], shapeTypes[i]);
+            try{
+                for (int i = 0; i < simbolos.length; i++) {
+                nuevo.addSymbol(i, figur[i], type[i], simbolos[i]);
+                }
+            }
+            catch(SlotMachineException e){
+                ok = false;
             }
         }
     }
@@ -167,12 +186,23 @@ public class SlotMachine
      * @param color color del simbolo (nombre valido segun CSS).
      * @param shapeType tipo de figura: "circle", "rectangle" o "triangle"
      */
-    public void addSymbol(int pos, String color, String shapeType)
+    public void addSymbol(String type, int pos, String color)
     {
-        if(wheels.size() > 0) {
+        String[] opciFigur = {"circle", "rectangle","triangle"};
+        int fig =random.nextInt(opciFigur.length);
+        if(wheels.size() == 0){
+            ok = false;
+        }
+        else if(wheels.size() > 0) {
             int position = normalizedPosition(pos, wheels.get(0).size() + 1);
-            for (int i = 0; i < wheels.size(); i++) {
-                wheels.get(i).addSymbol(position - 1, color, shapeType);
+            try{
+                for (int i = 0; i < wheels.size(); i++) {
+                    wheels.get(i).addSymbol(position - 1, opciFigur[fig], type, color);
+                }
+                ok = true;
+            }
+            catch(SlotMachineException e){
+                ok = false;
             }
         }
     }
@@ -269,6 +299,29 @@ public class SlotMachine
     public int distinctSymbols()
     {
         String[] colores = symbols();
+        int contador = 0;
+    
+        for (int i = 0; i < colores.length; i++) {
+            boolean yaVisto = false;
+            for (int j = 0; j < i; j++) {
+                if (colores[j].equals(colores[i])) {
+                    yaVisto = true;
+                }
+            }
+            if (!yaVisto) {
+                contador++;
+            }
+        }
+        return contador;
+    }
+
+        /**
+     * Devuelve la cantidad de colores distintos que actualmente son visibles.
+     * @return numero de colores distintos.
+     */
+    public int distinctCurrentSymbols()
+    {
+        String[] colores = configuration();
         int contador = 0;
     
         for (int i = 0; i < colores.length; i++) {

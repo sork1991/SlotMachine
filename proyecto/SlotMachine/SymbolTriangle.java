@@ -62,4 +62,11 @@ public class SymbolTriangle extends Triangle implements SymbolShape
     {
         return currentY;
     }
+    
+    public int[] getSize(){
+        int[] tamaño = new int[2];
+        tamaño[0] = width;
+        tamaño[1] = height;
+        return tamaño;
+    }
 }

@@ -56,4 +56,6 @@ public interface SymbolShape
      * @param width ancho deseado.
      */
     void changeSize(int height, int width);
+    
+    int[] getSize();
 }

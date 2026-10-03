@@ -1,5 +1,5 @@
 #BlueJ class context
-#Tue Sep 15 21:05:13 COT 2026
+#Fri Oct 02 20:28:10 COT 2026
 comment0.target=Symbol
 comment0.text=\r\n Representa un simbolo del dominio del juego. Es responsable del color\r\n (identidad logica del simbolo) y de si forma parte de la\r\n configuracion ganadora. Delega toda la representacion grafica en un\r\n objeto SymbolShape.\r\n \r\n @author \r\n @version 1.0\r\n
 comment1.params=color shapeType
@@ -15,6 +15,10 @@ comment12.text=\r\n Consulta si el simbolo es parte de la configuracion ganadora
 comment13.params=height width
 comment13.target=void changeSize(int, int)
 comment13.text=\r\n Delega a la interface symbolshape para cambiar el tama\u00F1o\r\n @param height la altura de la figura\r\n @param width el ancho de la figura\r\n
+comment14.target=java.lang.String getType()
+comment14.text=\r\n @return el tipo de simbolo que es\r\n
+comment15.target=void notifySpin()
+comment16.target=void notifySelection()
 comment2.params=shapeType
 comment2.target=SymbolShape createShape(java.lang.String)
 comment2.text=\r\n Segun el texto que llega en shapeType crea la figura que\r\n corresponde si no coincide con ninguna de las conocidas se crea\r\n un triangulo por defecto\r\n @param shapeType tipo de figura pedido\r\n @return la figura ya creada\r\n
@@ -34,4 +38,4 @@ comment8.target=int getY()
 comment8.text=\r\n Delega en shape.getY().\r\n @return coordenada y actual.\r\n
 comment9.target=void makeVisible()
 comment9.text=\r\n Delega en shape.makeVisible().\r\n
-numComments=14
+numComments=17

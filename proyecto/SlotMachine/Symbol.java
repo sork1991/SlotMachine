@@ -10,7 +10,7 @@
 public class Symbol
 {
     private String color;
-    private SymbolShape shape;
+    protected SymbolShape shape;
     private boolean winning;
     private String shapeType;
 
@@ -149,4 +149,15 @@ public class Symbol
     {
         shape.changeSize(height, width);
     }
+    
+    /**
+     * @return el tipo de simbolo que es
+     */
+    public String getType() {
+        return "normal";
+    }
+    
+    public void notifySpin(){}
+    
+    public void notifySelection(){}
 }

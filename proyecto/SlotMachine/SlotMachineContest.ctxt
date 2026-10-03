@@ -1,0 +1,8 @@
+#BlueJ class context
+#Sat Oct 03 09:17:22 COT 2026
+comment0.target=SlotMachineContest
+comment1.params=n
+comment1.target=int[][] solve(int)
+comment2.params=n
+comment2.target=void simulate(int)
+numComments=3
