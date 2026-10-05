@@ -1,5 +1,5 @@
 #BlueJ class context
-#Fri Oct 02 20:28:10 COT 2026
+#Sat Oct 03 12:38:40 COT 2026
 comment0.target=Symbol
 comment0.text=\r\n Representa un simbolo del dominio del juego. Es responsable del color\r\n (identidad logica del simbolo) y de si forma parte de la\r\n configuracion ganadora. Delega toda la representacion grafica en un\r\n objeto SymbolShape.\r\n \r\n @author \r\n @version 1.0\r\n
 comment1.params=color shapeType

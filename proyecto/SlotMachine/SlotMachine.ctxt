@@ -1,5 +1,5 @@
 #BlueJ class context
-#Sat Oct 03 09:17:22 COT 2026
+#Sun Oct 04 18:23:11 COT 2026
 comment0.target=SlotMachine
 comment0.text=\r\n Representa la maquina tragamonedas completa\: administra el conjunto de\r\n ruedas, controla la visibilidad general del simulador y lleva el estado\r\n de la ultima operacion realizada.\r\n \r\n @author DiazR-RojasM\r\n @version 1.0\r\n
 comment1.target=SlotMachine()
@@ -45,8 +45,8 @@ comment24.target=int normalizedPosition(int, int)
 comment24.text=\r\n Metodo de apoyo privado\: aplica la regla de recorte de posiciones\r\n (si pos < 1 usa 1; si pos > max usa max). Es privado porque es un\r\n detalle interno de implementacion, no forma parte de la interfaz\r\n publica que pide el enunciado.\r\n @param pos posicion solicitada.\r\n @param max valor maximo permitido.\r\n @return posicion normalizada.\r\n
 comment25.target=void centerWheels()
 comment25.text=\r\n Recalcula y aplica (via setPosition) la posicion visual de cada\r\n rueda y de la maquina para mantenerlas centradas, cada vez que\r\n se agrega o elimina una.\r\n Privado por la misma razon de normalizedPosition.\r\n
-comment3.params=pos
-comment3.target=void addWheel(int)
+comment3.params=pos tipo
+comment3.target=void addWheel(int, java.lang.String)
 comment3.text=\r\n Agrega una rueda nueva en la posicion indicada (normalizada).\r\n La rueda nueva se crea con los mismos simbolos (mismo color, figura y\r\n orden) que ya tienen las demas ruedas, para mantener la\r\n invariante de que todas las ruedas tienen igual cantidad de\r\n simbolos. Luego reacomoda visualmente todas las ruedas\r\n (centerWheels).\r\n @param pos posicion en la que se agrega la rueda.\r\n
 comment4.params=pos
 comment4.target=void delWheel(int)

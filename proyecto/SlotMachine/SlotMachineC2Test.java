@@ -32,11 +32,11 @@ public class SlotMachineC2Test
     }
     
     @Test
-    public void shouldSwapTwoWheels()
+    public void shouldSwapTwoWheels() throws SlotMachineException
     {
-        slotMachine.addWheel(1);
-        slotMachine.addWheel(2);
-        slotMachine.addWheel(3);
+        slotMachine.addWheel(1, "normal");
+        slotMachine.addWheel(2, "normal");
+        slotMachine.addWheel(3, "normal");
         slotMachine.addSymbol("normal",1,"red");
         slotMachine.addSymbol("normal",2,"blue");
         slotMachine.addSymbol("normal",3,"yellow");
@@ -50,10 +50,10 @@ public class SlotMachineC2Test
     }
     
     @Test
-    public void shouldNotChangeWhenSwappingSamePosition()
+    public void shouldNotChangeWhenSwappingSamePosition() throws SlotMachineException
     {
-        slotMachine.addWheel(1);
-        slotMachine.addWheel(2);
+        slotMachine.addWheel(1, "normal");
+        slotMachine.addWheel(2, "normal");
         slotMachine.addSymbol("normal",1,"red");
         slotMachine.addSymbol("normal",2,"blue");
         slotMachine.placeSymbol(1, "red");
@@ -65,9 +65,9 @@ public class SlotMachineC2Test
     }
     
     @Test
-    public void shouldChangeSymbolWhenUnlocked()
+    public void shouldChangeSymbolWhenUnlocked() throws SlotMachineException
     {
-        slotMachine.addWheel(1);
+        slotMachine.addWheel(1, "normal");
         slotMachine.addSymbol("normal",1,"red");
         slotMachine.addSymbol("normal",2,"blue");
         slotMachine.addSymbol("normal",3,"yellow");
@@ -83,9 +83,9 @@ public class SlotMachineC2Test
     }
     
     @Test
-    public void shouldNotChangeSymbolInWheelLock()
+    public void shouldNotChangeSymbolInWheelLock() throws SlotMachineException
     {
-        slotMachine.addWheel(1);
+        slotMachine.addWheel(1, "normal");
         slotMachine.addSymbol("normal",1,"red");
         slotMachine.addSymbol("normal",2,"blue");
         slotMachine.addSymbol("normal",3,"yellow");
@@ -100,9 +100,9 @@ public class SlotMachineC2Test
     }
     
     @Test
-    public void shouldMoveToCorrectSymbolAfterSteps()
+    public void shouldMoveToCorrectSymbolAfterSteps() throws SlotMachineException
     {
-        slotMachine.addWheel(1);
+        slotMachine.addWheel(1, "normal");
         slotMachine.addSymbol("normal",1,"red");
         slotMachine.addSymbol("normal",2,"blue");
         slotMachine.addSymbol("normal",3,"yellow");
@@ -114,9 +114,9 @@ public class SlotMachineC2Test
     }
     
     @Test
-    public void shouldNotMoveWhenWheelIsLocked()
+    public void shouldNotMoveWhenWheelIsLocked() throws SlotMachineException
     {
-        slotMachine.addWheel(1);
+        slotMachine.addWheel(1, "normal");
         slotMachine.addSymbol("normal",1,"red");
         slotMachine.addSymbol("normal",2,"blue");
         slotMachine.addSymbol("normal",3,"yellow");
@@ -130,10 +130,10 @@ public class SlotMachineC2Test
     }
     
     @Test
-    public void shouldSetExactConfiguration()
+    public void shouldSetExactConfiguration() throws SlotMachineException
     {
-        slotMachine.addWheel(1);
-        slotMachine.addWheel(2);
+        slotMachine.addWheel(1, "normal");
+        slotMachine.addWheel(2, "normal");
         slotMachine.addSymbol("normal",1,"red");
         slotMachine.addSymbol("normal",2,"blue");
         slotMachine.addSymbol("normal",3,"yellow");
@@ -144,10 +144,10 @@ public class SlotMachineC2Test
     }
     
     @Test
-    public void shouldNotChangeWhenTooManySymbolsGiven()
+    public void shouldNotChangeWhenTooManySymbolsGiven() throws SlotMachineException
     {
-        slotMachine.addWheel(1);
-        slotMachine.addWheel(2);
+        slotMachine.addWheel(1, "normal");
+        slotMachine.addWheel(2, "normal");
         slotMachine.addSymbol("normal",1,"red");
         slotMachine.addSymbol("normal",2,"blue");
         slotMachine.addSymbol("normal",3,"yellow");
@@ -161,11 +161,11 @@ public class SlotMachineC2Test
     }
 
     @Test
-    public void accordingDrRmShouldBeJackpotWhenAllWheelsMatch()
+    public void accordingDrRmShouldBeJackpotWhenAllWheelsMatch() throws SlotMachineException
     {
-        slotMachine.addWheel(1);
-        slotMachine.addWheel(2);
-        slotMachine.addWheel(3);
+        slotMachine.addWheel(1,"normal");
+        slotMachine.addWheel(2,"normal");
+        slotMachine.addWheel(3,"normal");
         slotMachine.addSymbol("normal", 1, "red");
         slotMachine.addSymbol("normal", 2, "blue");
         slotMachine.spin(new String[]{"red", "red", "red"});
@@ -173,11 +173,11 @@ public class SlotMachineC2Test
     }
     
     @Test
-    public void accordingDrRmShouldKeepCorrectWheelCountAfterAddAndDelete()
+    public void accordingDrRmShouldKeepCorrectWheelCountAfterAddAndDelete() throws SlotMachineException
     {
-        slotMachine.addWheel(1);
-        slotMachine.addWheel(2);
-        slotMachine.addWheel(3);
+        slotMachine.addWheel(1,"normal");
+        slotMachine.addWheel(2, "normal");
+        slotMachine.addWheel(3,"normal");
         slotMachine.delWheel(2);
         slotMachine.addSymbol("normal", 1, "red");
         slotMachine.spin(new String[]{"red", "red"});

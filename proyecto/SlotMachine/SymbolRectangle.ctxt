@@ -1,5 +1,5 @@
 #BlueJ class context
-#Fri Oct 02 11:03:43 COT 2026
+#Sat Oct 03 12:38:40 COT 2026
 comment0.target=SymbolRectangle
 comment0.text=\r\n SymbolRectangle es un Rectangle extendido. Extiende su figura\r\n original sin modificarla y ademas implementa SymbolShape, agregando\r\n la capacidad de posicionamiento absoluto que las figuras originales\r\n no tienen (solo ofrecen movimiento relativo).\r\n SymbolRectangle implementa el contrato SymbolShape.\r\n \r\n makeVisible(), makeInvisible() y changeColor() se heredan\r\n directamente de Rectangle y ya cumplen con lo que pide la interfaz\r\n SymbolShape.\r\n \r\n @author \r\n @version 1.0\r\n
 comment1.target=SymbolRectangle()

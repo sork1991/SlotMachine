@@ -1,0 +1,14 @@
+#BlueJ class context
+#Sun Oct 04 18:10:59 COT 2026
+comment0.target=Lazy
+comment0.text=\r\n Write a description of class Lazy here.\r\n \r\n @author (your name) \r\n @version (a version number or a date)\r\n
+comment1.target=Lazy()
+comment1.text=\r\n Constructor for objects of class Rebel\r\n
+comment2.target=java.lang.String type()
+comment2.text=\r\n @return el tipo de rueda\r\n
+comment3.target=void spin()
+comment3.text=\r\n al llamar el metodo una vez, la rueda no gira,y actualiza intento a true,\r\n se requiere llamar el metodo una segunda vez para girar y de nuevo\r\n actualizar intento a false\r\n
+comment4.params=steps
+comment4.target=void spin(int)
+comment4.text=\r\n gira unicamente la mitad de pasos que se le indic\u00F3\r\n
+numComments=5

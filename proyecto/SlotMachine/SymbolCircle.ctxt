@@ -1,5 +1,5 @@
 #BlueJ class context
-#Fri Oct 02 11:03:43 COT 2026
+#Sat Oct 03 12:38:40 COT 2026
 comment0.target=SymbolCircle
 comment0.text=\r\n SymbolCircle es un Circle extendido con posicionamiento absoluto.\r\n Extiende su figura original sin modificarla y ademas implementa\r\n SymbolShape, agregando la capacidad de posicionamiento absoluto que\r\n las figuras originales no tienen (solo ofrecen movimiento relativo).\r\n SymbolCircle implementa el contrato SymbolShape.\r\n \r\n makeVisible(), makeInvisible() y changeColor() se heredan\r\n directamente de Circle y ya cumplen con lo que pide la interfaz\r\n SymbolShape.\r\n \r\n @author \r\n @version 1.0\r\n
 comment1.target=SymbolCircle()

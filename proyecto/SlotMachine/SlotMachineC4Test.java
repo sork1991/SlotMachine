@@ -32,8 +32,8 @@ public class SlotMachineC4Test
     }
 
     @Test
-    public void shouldNotAddSymbolWhenTypeIsUnknown(){
-        slotMachine.addWheel(1);
+    public void shouldNotAddSymbolWhenTypeIsUnknown() throws SlotMachineException{
+        slotMachine.addWheel(1, "normal");
         slotMachine.addSymbol("shyy",1,"red");
         assertFalse(slotMachine.ok());
         int sy = slotMachine.symbols().length;
@@ -140,6 +140,73 @@ public class SlotMachineC4Test
         assertTrue(shy.getVisibility());
         shy.makeVisible();
         assertTrue(shy.getVisibility());
+    }
+    
+    @Test
+    public void shouldNotLockRebelWheel() {
+        Rebel rebel = new Rebel();
+        rebel.lock();
+        assertFalse(rebel.isLocked());
+    }
+    
+    @Test
+    public void shouldNotSwapRebelWheel() throws SlotMachineException {
+        slotMachine.addWheel(1, "rebel");
+        slotMachine.addWheel(2, "normal");
+        slotMachine.addSymbol("normal",1,"red");
+        slotMachine.addSymbol("normal",2,"blue");
+        slotMachine.placeSymbol(1, "red");
+        slotMachine.placeSymbol(2, "blue");
+        slotMachine.swap(1, 2);
+        String[] esperado = new String[]{"red", "blue"};
+        String[] resultado = slotMachine.configuration();
+        assertArrayEquals(esperado, resultado);
+    }
+    
+    @Test
+    public void shouldOnlySpinHalfSteps() throws SlotMachineException{
+        Lazy lazy = new Lazy();
+        lazy.addSymbol(0,"circle","normal","red");
+        lazy.addSymbol(1,"circle","normal","blue");
+        lazy.addSymbol(2,"circle","normal","green");
+        lazy.addSymbol(3,"circle","normal","yellow");
+        lazy.addSymbol(4,"circle","normal","magenta");
+        lazy.placeSymbol("red");
+        lazy.spin(6);
+        assertEquals("yellow", lazy.getCurrentColor());
+    }
+    
+    @Test
+    public void shouldCopyLeftColor() throws SlotMachineException
+    {
+        Wheel izquierda = new Wheel();
+        izquierda.addSymbol(0, "circle", "normal", "red");
+        izquierda.placeSymbol("red");
+    
+        Lefty lefty = new Lefty();
+        lefty.addSymbol(0, "circle", "normal", "red");
+        lefty.addSymbol(1, "circle", "normal", "blue");
+        lefty.placeSymbol("blue");
+    
+        lefty.spin(izquierda);
+    
+        assertEquals("red", lefty.getCurrentColor());
+    }
+    
+    @Test
+    public void shouldLockIfLeftIsLocked() throws SlotMachineException
+    {
+        Wheel izquierda = new Wheel();
+        izquierda.addSymbol(0, "circle", "normal", "green");
+        izquierda.placeSymbol("green");
+        izquierda.lock();
+    
+        Lefty lefty = new Lefty();
+        lefty.addSymbol(0, "circle", "normal", "green");
+    
+        lefty.spin(izquierda);
+    
+        assertTrue(lefty.isLocked());
     }
     
     /**

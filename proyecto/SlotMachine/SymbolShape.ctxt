@@ -1,5 +1,5 @@
 #BlueJ class context
-#Fri Oct 02 11:03:43 COT 2026
+#Sat Oct 03 12:38:40 COT 2026
 comment0.target=SymbolShape
 comment0.text=\r\n Contrato comun que deben cumplir todas las figuras que pueden\r\n representar visualmente a un Symbol, sin importar su forma concreta\r\n (circulo, rectangulo o triangulo). Permite que Symbol trabaje de\r\n manera uniforme con cualquiera de ellas (polimorfismo) sin necesidad\r\n de modificar las clases originales del paquete shapes.\r\n \r\n @author \r\n @version 1.0\r\n
 comment1.params=x y

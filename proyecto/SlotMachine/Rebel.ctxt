@@ -1,0 +1,13 @@
+#BlueJ class context
+#Sun Oct 04 18:10:59 COT 2026
+comment0.target=Rebel
+comment0.text=\r\n Write a description of class Rebel here.\r\n \r\n @author (your name) \r\n @version (a version number or a date)\r\n
+comment1.target=Rebel()
+comment1.text=\r\n Constructor for objects of class Rebel\r\n
+comment2.target=java.lang.String type()
+comment2.text=\r\n @return el tipo de rueda\r\n
+comment3.target=boolean isRebel()
+comment3.text=\r\n @return true indicando que la rueda es rebelde\r\n
+comment4.target=void lock()
+comment4.text=\r\n no bloquea la rueda, solo indica que no se puede bloquar debido a su tipo\r\n
+numComments=5

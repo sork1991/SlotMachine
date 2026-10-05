@@ -23,7 +23,7 @@ public class SlotMachineContestTest
     }
     
     @Test
-    public void shouldGenerateSameSizeInWheelsandSymbols(){
+    public void shouldGenerateSameSizeInWheelsandSymbols() throws SlotMachineException{
         SlotMachine sM = new SlotMachine(4);
         int sizeW = sM.configuration().length;
         String[] s = sM.symbols();
@@ -33,7 +33,7 @@ public class SlotMachineContestTest
     }
     
     @Test
-    public void shouldGenereteMoreWheelsThanSymbolsWithNumberMajorthanColors(){
+    public void shouldGenereteMoreWheelsThanSymbolsWithNumberMajorthanColors() throws SlotMachineException{
         SlotMachine sM = new SlotMachine(8);
         int sizeW = sM.configuration().length;
         String[] s = sM.symbols();
@@ -42,7 +42,7 @@ public class SlotMachineContestTest
     }
     
     @Test
-    public void accordingDrRmShouldNotCreateWheelAndSymbolWithNegativeNumber(){
+    public void accordingDrRmShouldNotCreateWheelAndSymbolWithNegativeNumber() throws SlotMachineException{
         int n = -3;
         SlotMachine sM = new SlotMachine(n);
         int sizeW = sM.configuration().length;
@@ -53,7 +53,7 @@ public class SlotMachineContestTest
     }
     
     @Test
-    public void accordingDrRmShouldHaveNDifferentColors()
+    public void accordingDrRmShouldHaveNDifferentColors() throws SlotMachineException
     {
         int n = 3;
         SlotMachine sM = new SlotMachine(n);
@@ -66,7 +66,7 @@ public class SlotMachineContestTest
      * mas de 0 movimientos
      */
     @Test
-    public void accordingDrRmShouldReturnNonEmptyMovesWhenNotInJackpot() {
+    public void accordingDrRmShouldReturnNonEmptyMovesWhenNotInJackpot() throws SlotMachineException{
         int n = 4;
         SlotMachine sM = new SlotMachine(n);
         int[][] moves = SlotMachineContest.solve(n);
@@ -79,7 +79,7 @@ public class SlotMachineContestTest
      * Verifica que no tenga pasos negativos
      */
     @Test
-    public void accordingDrRmShouldNotReturnNegativeStepsInSolve() {
+    public void accordingDrRmShouldNotReturnNegativeStepsInSolve() throws SlotMachineException{
         int n = 4;
         int[][] moves = SlotMachineContest.solve(n);
         for (int[] move : moves) {
@@ -92,7 +92,7 @@ public class SlotMachineContestTest
      * Verifica que si la rueda está en jackpot no hace nada
      */
     @Test
-    public void shouldReturnZeroMovesWhenMachineStartsInJackpot() {
+    public void shouldReturnZeroMovesWhenMachineStartsInJackpot() throws SlotMachineException{
         int n = 3;
         int[][] moves = SlotMachineContest.solve(n);
         SlotMachine sM = new SlotMachine(n);
@@ -107,7 +107,7 @@ public class SlotMachineContestTest
      * en el resultado si sea valido, debe estar entre 1 y n
      */
     @Test
-    public void shouldNotReturnInvalidWheelIndicesInSolve() {
+    public void shouldNotReturnInvalidWheelIndicesInSolve() throws SlotMachineException{
         int n = 4;
         int[][] moves = SlotMachineContest.solve(n);
         

@@ -1,5 +1,5 @@
 #BlueJ class context
-#Sat Oct 03 09:17:22 COT 2026
+#Sun Oct 04 18:10:59 COT 2026
 comment0.target=Wheel
 comment0.text=\r\n Representa una rueda individual de la maquina. Administra su propia\r\n coleccion de simbolos, sabe cual es el simbolo actualmente mostrado y\r\n gestiona su propia visibilidad y posicion.\r\n \r\n @author \r\n @version 1.0\r\n
 comment1.target=Wheel()
@@ -33,6 +33,17 @@ comment21.params=steps
 comment21.target=void spin(int)
 comment21.text=\r\n Rota la rueda steps posiciones desde el simbolo actual, en el\r\n orden de la lista. Si la rueda esta visible, el\r\n movimiento se ve paso a paso.\r\n @param steps cantidad de posiciones a avanzar.\r\n
 comment22.target=void notifySpinForSymbols()
+comment23.target=java.lang.String type()
+comment23.text=\r\n @return el tipo de rueda\r\n
+comment24.target=boolean isRebel()
+comment24.text=\r\n @return false indicando que no es rebel\r\n
+comment25.params=tipo
+comment25.target=Wheel crear(java.lang.String)
+comment25.text=\r\n metodo de creaci\u00F3n para las ruedas de distintos tipos\r\n @return nueva rueda\r\n
+comment26.params=izquierda
+comment26.target=void spin(Wheel)
+comment27.params=izquierda steps
+comment27.target=void spin(Wheel, int)
 comment3.target=int getX()
 comment3.text=\r\n Devuelve la coordenada x actual de la rueda.\r\n @return coordenada x.\r\n
 comment4.target=int getY()
@@ -51,4 +62,4 @@ comment8.target=void placeSymbol(java.lang.String)
 comment8.text=\r\n Busca el simbolo con ese color dentro de symbols y lo asigna como\r\n currentSymbol, ocultando el anterior y mostrando el nuevo si la\r\n rueda esta visible.\r\n @param color color del simbolo a colocar.\r\n
 comment9.target=void spin()
 comment9.text=\r\n Selecciona al azar una posicion dentro de symbols (usando el\r\n tamano actual de la lista), oculta el currentSymbol anterior,\r\n actualiza currentSymbol al elegido y lo muestra si la rueda esta\r\n visible.\r\n
-numComments=23
+numComments=28

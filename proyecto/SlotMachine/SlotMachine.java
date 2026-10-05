@@ -63,7 +63,7 @@ public class SlotMachine
      * de 0 al maximo de colores que hayan
      * @param n numero de ruedas y simbolos deseados
      */
-    public SlotMachine(int n){
+    public SlotMachine(int n) throws SlotMachineException{
         body = new Rectangle();
         handle = new Circle();
         arm = new Rectangle();
@@ -88,10 +88,11 @@ public class SlotMachine
         currentX = 135;
         String[] opciCol = {"red", "blue", "black", "yellow", "green", "magenta"};
         String[] opciType = {"normal", "shy","ephemeral"};
+        String[][] simbolos = new String[6][2];
         int dispos = opciCol.length;
         Random random = new Random();        
         for(int i =0; i<n; i++){
-            addWheel(i);
+            addWheel(i, "normal");
         }
         if (n > dispos){
             int dif = n-dispos;
@@ -99,7 +100,9 @@ public class SlotMachine
             for(int i=0; i < fin; i++){    
                 int type =random.nextInt(opciType.length);
                 int col = random.nextInt(dispos);
-                addSymbol(opciType[type], i, opciCol[col]);
+                simbolos[i][0] = opciType[type];
+                simbolos[i][1]= opciCol[col];
+                addSymbol(opciType[type], i+1, opciCol[col]);
                 String elegi = opciCol[col];
                 opciCol[col] = opciCol[dispos-1];
                 opciCol[dispos-1] = elegi;
@@ -119,6 +122,13 @@ public class SlotMachine
                 dispos -= 1;
             }
         }
+        if(n > 6){
+            int diferencia = n-6;
+            for(int i = 0; i < diferencia; i++){
+                int posicion = i%6;
+                addSymbol(simbolos[posicion][0], 7+i, simbolos[posicion][1]);
+            }
+        }
         ok = true;
         spin();
     }
@@ -134,10 +144,10 @@ public class SlotMachine
      * (centerWheels).
      * @param pos posicion en la que se agrega la rueda.
      */
-    public void addWheel(int pos)
+    public void addWheel(int pos, String tipo) throws SlotMachineException
     {
         int position = normalizedPosition(pos, wheels.size()+1);
-        Wheel nuevo = new Wheel();
+        Wheel nuevo = Wheel.crear(tipo);
         String[] simbolos = null;
         String[] figur = null;
         String[] type = null;
@@ -172,9 +182,16 @@ public class SlotMachine
     public void delWheel(int pos)
     {
         int position = normalizedPosition(pos, wheels.size());
-        wheels.get(position - 1).remove();
-        wheels.remove(position - 1);
-        centerWheels();
+        if(!wheels.get(position - 1).isRebel()){
+            wheels.get(position - 1).remove();
+            wheels.remove(position - 1);
+            centerWheels();
+        }
+        else{
+            if(isVisible){
+                JOptionPane.showMessageDialog(null, "No se puede eliminar una rueda rebelde");
+            }
+        }
     }
 
     /**
@@ -237,8 +254,9 @@ public class SlotMachine
     public void spin(int wheel)
     {
         int position = normalizedPosition(wheel, wheels.size());
+        Wheel izquierda = (position > 1) ? wheels.get(position-2) : null;
         if(!wheels.get(position-1).isLocked()){
-           wheels.get(position - 1).spin(); 
+           wheels.get(position - 1).spin(izquierda); 
         }
         else if (isVisible) {
             JOptionPane.showMessageDialog(null, "La rueda está bloqueada");
@@ -261,8 +279,9 @@ public class SlotMachine
     public void spin()
     {
         for (int i = 0; i < wheels.size(); i++) {
+            Wheel izquierda = (i > 0) ? wheels.get(i-1) : null;
             if(!wheels.get(i).isLocked()){
-                wheels.get(i).spin();
+                wheels.get(i).spin(izquierda);
             }
         }
         if (isJackpot()) {
@@ -432,13 +451,20 @@ public class SlotMachine
     public void swap(int wheel1, int wheel2){
         int i = normalizedPosition(wheel1, wheels.size());
         int j = normalizedPosition(wheel2, wheels.size());
-        Wheel first = wheels.get(i-1);
-        Wheel second = wheels.get(j-1);
-        wheels.set(i-1, second);
-        wheels.set(j-1, first);
-        centerWheels();
-        if(isVisible){
-            makeVisible();
+        if(!(wheels.get(i-1).isRebel() || wheels.get(j-1).isRebel())){
+            Wheel first = wheels.get(i-1);
+            Wheel second = wheels.get(j-1);
+            wheels.set(i-1, second);
+            wheels.set(j-1, first);
+            centerWheels();
+            if(isVisible){
+                makeVisible();
+            }
+        }
+        else{
+            if(isVisible){
+                JOptionPane.showMessageDialog(null, "No se puede intercambiar una rueda rebelde");
+            }
         }
     }
     
@@ -467,8 +493,9 @@ public class SlotMachine
      */
     public void spin(int wheel, int steps){
         int pos = normalizedPosition(wheel, wheels.size());
+        Wheel izquierda = (pos > 1) ? wheels.get(pos-2) : null;
         if(!wheels.get(pos-1).isLocked()){
-            wheels.get(pos-1).spin(steps);
+            wheels.get(pos-1).spin(izquierda, steps);
         }
         else if (isVisible) {
             JOptionPane.showMessageDialog(null, "La rueda está bloqueada");

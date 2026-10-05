@@ -10,10 +10,11 @@ import java.util.ArrayList;
  */
 public class Wheel
 {
-    private Rectangle frame;
+    protected Rectangle frame;
+    protected Rectangle borde;
     private ArrayList<Symbol> symbols;
     private Symbol currentSymbol;
-    private boolean visible;
+    protected boolean visible;
     private int currentX;
     private int currentY;
     private boolean locked;
@@ -23,10 +24,15 @@ public class Wheel
      */
     public Wheel()
     {
+        borde = new Rectangle();
         frame = new Rectangle();
         symbols = new ArrayList<Symbol>();
         currentX = 70;
         currentY = 15;
+        borde.changeSize(44, 26);
+        borde.changeColor("white");
+        borde.moveHorizontal(-1);
+        borde.moveVertical(-2);
         frame.changeSize(40, 24);
         frame.changeColor("white");
     }
@@ -42,6 +48,8 @@ public class Wheel
     {
         int dx = x - currentX;
         int dy = y - currentY;
+        borde.moveHorizontal(dx);
+        borde.moveVertical(dy);
         frame.moveHorizontal(dx);
         frame.moveVertical(dy);
         currentX = x;
@@ -169,6 +177,7 @@ public class Wheel
     public void makeVisible()
     {
         visible = true;
+        borde.makeVisible();
         frame.makeVisible();
         if (currentSymbol != null) {
             currentSymbol.makeVisible();
@@ -181,6 +190,7 @@ public class Wheel
     public void makeInvisible()
     {
         visible = false;
+        borde.makeInvisible();
         frame.makeInvisible();
         if (currentSymbol != null) {
             currentSymbol.makeInvisible();
@@ -266,6 +276,7 @@ public class Wheel
             symbols.get(i).makeInvisible();
         }
         frame.makeInvisible();
+        borde.makeInvisible();
         visible = false;
     }
     /**
@@ -319,5 +330,51 @@ public class Wheel
         for(int i=0; i<symbols.size();i++){
                 symbols.get(i).notifySpin();
             }
+    }
+    
+    /**
+     * @return el tipo de rueda
+     */
+    public String type(){
+        return "normal";
+    }
+    
+    /**
+     * @return false indicando que no es rebel
+     */
+    public boolean isRebel(){
+        return false;
+    }
+    
+    /**
+     * metodo de creación para las ruedas de distintos tipos
+     * @return nueva rueda
+     */
+    public static Wheel crear(String tipo) throws SlotMachineException{
+        if(tipo.equals("normal")){
+            Wheel nuevo = new Wheel();
+            return nuevo;
+        }
+        else if(tipo.equals("rebel")){
+            Wheel nuevo = new Rebel();
+            return nuevo;
+        }
+        else if(tipo.equals("lefty")){
+            Wheel nuevo = new Lefty();
+            return nuevo;
+        }
+        else if(tipo.equals("lazy")){
+            Wheel nuevo = new Lazy();
+            return nuevo;
+        }
+        throw new SlotMachineException("el tipo es invalido");
+    }
+    
+    public void spin(Wheel izquierda){
+        this.spin();
+    }
+    
+    public void spin(Wheel izquierda, int steps){
+        this.spin(steps);
     }
 }

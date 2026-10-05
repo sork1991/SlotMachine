@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class SlotMachineContest
 {
-    public static int[][] solve(int n)
+    public static int[][] solve(int n) throws SlotMachineException
     {
         SlotMachine sm = new SlotMachine(n);
         ArrayList<int[]> resultado = new ArrayList<int[]>();
@@ -24,30 +24,51 @@ public class SlotMachineContest
             int tamGrupo = 1;
 
             for (int i = 2; i <= n; i++) {
+                if(sm.isJackpot()){
+                    break;
+                }
                 int pasosNecesarios = 0;
 
                 for (int intento = 1; intento < n; intento++) {
+                    if(sm.isJackpot()){
+                        break;
+                    }
                     int[] antes = new int[n];
                     for (int s = 0; s < n; s++) {
+                        if(sm.isJackpot()){
+                            break;
+                        }
                         sm.spin(i, 1);
                         antes[s] = sm.distinctCurrentSymbols();
                     }
                     for (int g = 0; g < tamGrupo; g++) {
+                        if(sm.isJackpot()){
+                            break;
+                        }
                         sm.spin(grupo[g], intento);
                     }
 
                     int[] despues = new int[n];
                     for (int s = 0; s < n; s++) {
+                        if(sm.isJackpot()){
+                            break;
+                        }
                         sm.spin(i, 1);
                         despues[s] = sm.distinctCurrentSymbols();
                     }
 
                     for (int g = 0; g < tamGrupo; g++) {
+                        if(sm.isJackpot()){
+                            break;
+                        }
                         sm.spin(grupo[g], n - intento);
                     }
                     int candidato = -1;
                     int cantidad = 0;
                     for (int s = 0; s < n; s++) {
+                        if(sm.isJackpot()){
+                            break;
+                        }
                         if (despues[s] - antes[s] > 0) {
                             candidato = s;
                             cantidad++;
@@ -75,7 +96,7 @@ public class SlotMachineContest
         return acciones;
     }
 
-    public static void simulate(int n)
+    public static void simulate(int n) throws SlotMachineException
     {
         SlotMachine sm = new SlotMachine(n);
         sm.makeVisible();
@@ -95,32 +116,53 @@ public class SlotMachineContest
             int tamGrupo = 1;
 
             for (int i = 2; i <= n; i++) {
+                if(sm.isJackpot()){
+                    break;
+                }
                 int pasosNecesarios = 0;
 
                 for (int intento = 1; intento < n; intento++) {
+                    if(sm.isJackpot()){
+                        break;
+                    }
                     int[] antes = new int[n];
                     for (int s = 0; s < n; s++) {
+                        if(sm.isJackpot()){
+                            break;
+                        }
                         sm.spin(i, 1);
                         antes[s] = sm.distinctCurrentSymbols();
                     }
 
                     for (int g = 0; g < tamGrupo; g++) {
+                        if(sm.isJackpot()){
+                            break;
+                        }
                         sm.spin(grupo[g], intento);
                     }
 
                     int[] despues = new int[n];
                     for (int s = 0; s < n; s++) {
+                        if(sm.isJackpot()){
+                            break;
+                        }
                         sm.spin(i, 1);
                         despues[s] = sm.distinctCurrentSymbols();
                     }
 
                     for (int g = 0; g < tamGrupo; g++) {
+                        if(sm.isJackpot()){
+                            break;
+                        }
                         sm.spin(grupo[g], n - intento);
                     }
 
                     int candidato = -1;
                     int cantidad = 0;
                     for (int s = 0; s < n; s++) {
+                        if(sm.isJackpot()){
+                            break;
+                        }
                         if (despues[s] - antes[s] > 0) {
                             candidato = s;
                             cantidad++;
